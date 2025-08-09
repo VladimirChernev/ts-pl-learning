@@ -12,14 +12,15 @@
 
 - npm install (install all project packages)
 - npx ts-node -v (if it asks you to install ts-node Accept, try again and you should see a version in your console like 'v10.9.2')
-- npm init playwright@latest    OR    npx playwright install --with-deps  (install Plawright )
+- npm init playwright@latest    OR    npx playwright install --with-deps  (install Plawright with prompts or silent)
 
 # Proxy set up (only use if you cant run the commands above):
 Execute the following commands in git-bash terminal:
-Note!: You need to update these settings each time you change your windows password!
-- npm config set proxy http://user:pass@webgateway.procreditbank.bg:9090 (substitude `user` with your windows user as in "C:\Users", substitude `pass` with your windows password)
-- npm config set https-proxy http://user:pass@webgateway.procreditbank.bg:9090 (same as above)
-- npm config set strict-ssl=false
+Note!: You need to update these settings each time you change your password!
+Substitude `user` and `pass` with your credentials, example url: http://VladimirChernev:password@webgateway.procreditbank.bg:9090)
+- npm config set proxy http://user.pass.proxy.url.bg:9999  (set proxy for http)
+- npm config set https-proxy http://user.pass.proxy.url.bg:9999 (same as above but for https)
+- npm config set strict-ssl=false  (some proxies need to ingore strict ssl certificates, use if needed)
 
 # Set up VS Code User Settings with:
 
