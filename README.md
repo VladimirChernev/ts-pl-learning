@@ -19,7 +19,7 @@ Execute the following commands in git-bash terminal:
 Note!: You need to update these settings each time you change your password!
 Substitude `user` and `pass` with your credentials, example url: http://VladimirChernev:password@webgateway.procreditbank.bg:9090)
 - npm config set proxy http://user.pass.proxy.url.bg:9999  (set proxy for http)
-- npm config set https-proxy http://user.pass.proxy.url.bg:9999 (same as above but for https)
+- npm config set https-proxy http://user.pass.proxy.url.bg:9999  (same as above but for https)
 - npm config set strict-ssl=false  (some proxies need to ingore strict ssl certificates, use if needed)
 
 # Set up VS Code User Settings with:
