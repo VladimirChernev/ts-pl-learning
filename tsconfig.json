@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleDetection": "force",
+    "target": "ESNext",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "noImplicitOverride": true
+  }
+}
