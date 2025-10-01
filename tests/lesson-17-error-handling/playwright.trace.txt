@@ -1,0 +1,28 @@
+
+- normal playwright execution and error:
+npx playwright test
+
+- playwright execution + traceviewer capture of debug info
+npx playwright test --trace on
+
+- or set trace option in playwright.config.test
+
+- traceviewer doc: https://playwright.dev/docs/trace-viewer-intro
+
+- can open traceviewer with command provided after test failure like so:
+npx playwright show-trace test-results\scenario.example-Basic-Scenario-Microsoft-Edge\trace.zip
+
+- or through report link
+
+show all capabilities:
+- timeline
+- actions
+- metadata
+- locator
+- call
+- log
+- errors
+- console
+- network
+- source
+- attachments
