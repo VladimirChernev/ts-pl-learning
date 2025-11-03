@@ -21,12 +21,12 @@ Why use Playwright?
 - powerful tools: CodeGen (generates code), Inspector (selectors / locators helper), Tracing / Traceviewer (debug)
 - very few limitations - multi tab, origin and window support, iframe support, pierce the shadow dom, make API request
 
-Playwright Implementation and CodeGen examples:
+How to use Playwright?
 - playwright install
 - playwright config (testdir, report, headless, slowmo, pick browser)
 - basic test structure: imports, test syntax, actions, assertions
 - playwright execution commands
 - playwright execution parameters
-- reports
-- trace tool
-- record new
+- report tool
+- trace viewer tool
+- record CodeGen
