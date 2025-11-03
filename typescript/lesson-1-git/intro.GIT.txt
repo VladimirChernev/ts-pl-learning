@@ -1,0 +1,86 @@
+
+What is GIT?
+
+Its an Open Source Distributed Version Control System:
+- records changes to files inside a repository over time
+- keeps full project histiory, you can roll back to previous save states known as 'commits' 
+
+Centralized VCSs vs Distributed VCSs:
+- Centralized means everyone on your team connects to the same server to get the latest version of your project (e.g Jira)
+- Issue with Centralized is if the server goes down we cant access previous versions or the history of our Repo (repository) which can cause a lot of problems or downtime
+- In a Distributed system like GIT this is not an issue because every team member has a copy of the project on their local machine
+- GIT is amazing for working in large teams, everyone can work together on their own files at the same time without having to worry about changes being made by other team members
+- once ready all changes can be Merged together into one Main branch typically known as Master
+
+see GIT Workflow picture
+
+Why GIT?
+- Free
+- Open Source
+- Extremely fast - creating branches in GIT is far quicker then Centralized VCSs
+- Scalable
+- The mosty widely used VCS in the world
+- without a VCS you need to create folders for differnet versions like v1.0, v2.0 etc and this can easily get out of hand
+
+Difference between GIT and BitBucket, TortoisSVN, GitHub, GitLab etc:
+- GIT is Version Control System (lives on your local machine, you can have GIT repositories with out using BitBucket, TortoisSVN, GitHub, GitLab)
+- BitBucket, TortoisSVN, GitHub, GitLab are hosting services that work with GIT and let you manage and share your GIT repositories 
+- this is how you interact with your team members: you upload your GIT repository to BitBucket, TortoisSVN, GitHub, GitLab so the team can work together and clone that Repo to their local machine
+
+How to Install GIT?
+- google 'download GIT' -> 'https://git-scm.com/downloads'
+- git use documentation: https://git-scm.com/book/en/v2
+- choose OS 'Windows'
+- choose Standalone x64 installer
+- open GitBash and check 'git version'
+- add creds for GIT: https://confluence.procreditbank.bg:9443/display/KB/Self+signed+certificate+problem
+
+Create a GIT Repo:
+- GitBash - navigate to intended Git Repo folder
+- run command 'git init RepoName'
+- other commands: ls, cd RepoFolder, ls -a
+- run command 'git status'
+- create a file in the repo and 
+- run command 'git status' again
+- run command 'git add .' means add all files or you can just name the file to be added
+- run command 'git commit -m "added file"' 
+
+BitBucket Repository basics:
+- creating
+- cloning 'git clone RepoURL'
+
+Basic Git Workflow:
+- 'git clone' download repo to local machine 
+- work and make changes to the files in the Repo
+- 'git pull' update from remote Repo to the latest version of the working branch, working branch should never be master!
+- 'git add .' add all changes to the next commit, this 'stages' them
+- 'git commit -m "message"' create the next commit with message, we have Story ID requirement for our commit messages!
+- 'git commit' alternative for multi line messages with VIM, to exit VIM press Escape, write :wq!, press enter
+- 'git push -u origin master' push all the non pushed commits to the remote repo
+- 'git push' if previous command was used once just this will also work now
+- 'git fetch' update local GIT knowledge of all branches on remote Repo
+
+How to rollback changes:
+- 'git restore fileName' removes all local changes to the file
+- 'git log' shows the full commit history of the Repo
+- 'git revert -n commitID' remove commit change from branch, you can use the name 'head' for latest commit. -n means dont commit the revert immediately
+- 'git reset commitID' reset the status of our project to a specific commit, leaves no git logs!
+- 'git --help' gives info on all available git commands
+
+Branching:
+- allows you and your team members to maintain different versions of the Project / Repo at the same time
+- 'git pull' always make sure you are on the latest commit on master before branching!
+- 'git branch branchName' creates a new branch from the current one
+- 'git branch' shows all available branches on local machine
+- 'git branch -a' shows all available branches on local machine and on remote Repo
+- 'git switch branchName' switch to a specific branch
+- 'git switch -c branchName' create a new branch and switch to it, this is an old command that does the same 'git checkout -b branchName'
+- 'git branch -d branchName' deletes a branch, must be on another branch when deliting a branch
+- finally push branches to make them available in the remote Repo to everyone
+
+Merging (and dealing with Conflints):
+- you can Merge your commits and their branch into master with a pull request if all work is done on this branch
+- 'git merge branchName' execute on master and give the name of the branch to be merged into master
+- fast forward merging: no changes on target branch (master) since merging branch was created
+- automatic merging: changes to target branch but no conflicts
+- conflicts happen when GIT is unable to resolve differences in files between two commits
