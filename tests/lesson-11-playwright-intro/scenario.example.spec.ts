@@ -3,14 +3,13 @@ import { test, expect } from '@playwright/test';
 // documentation: https://playwright.dev/docs/writing-tests
 
 test('Basic Scenario', async ({ page }) => {
-  await page.goto('https://banker3-qa.test.procreditbank.bg/');
+  await page.goto('https://st2016.inv.bg/');
+  await expect(page).toHaveTitle('Вход - QA Ground');
 
-  await page.getByRole('link', { name: 'Login' }).click();
-  await expect(page).toHaveTitle('Банкер 3 OnLine Вход в системата');
+  await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+  await page.locator('#loginpassword').fill('111111');
+  await expect(page.getByRole('radio', { name: 'Български' })).toBeChecked();
 
-  await page.locator('#nickName').fill('it-qa1');
-  await page.locator('#password').fill('it-qa1');
-  await page.locator('#submit2').click();
-  const iFrame = page.locator('#b3main').contentFrame();
-  await expect.soft(iFrame.getByRole('link', { name: 'Касов модул' })).toBeVisible();
+  await page.locator('#loginsubmit').click();
+  await expect(page).toHaveTitle('Система за фактуриране - QA Ground');
 });

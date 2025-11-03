@@ -1,6 +1,4 @@
 
-playwright intro
-
 What is Playwright?
 - open source framework
 - a way to create reliable E2E tests for modern websites
