@@ -22,7 +22,11 @@ Why use Playwright?
 - very few limitations - multi tab, origin and window support, iframe support, pierce the shadow dom, make API request
 
 Playwright Implementation and CodeGen examples:
-- pick browser (project)
-- pick lockator
-- record new
+- playwright install
+- playwright config (testdir, report, headless, slowmo, pick browser)
 - basic test structure: imports, test syntax, actions, assertions
+- playwright execution commands
+- playwright execution parameters
+- reports
+- trace tool
+- record new

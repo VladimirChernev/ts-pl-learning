@@ -1,3 +1,4 @@
+
 ## Istallation and Set Up
 
 
@@ -60,6 +61,29 @@ Substitude `user` and `pass` with your credentials, example url: http://Vladimir
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }
+
+
+## Playwright commands:
+
+# Select tests to execute:
+- 'npx playwright test' -> runs all tests in project
+- 'npx playwright test tests/lesson-11-playwright-intro' -> run all tests in all spec files in a specific directory and its subdirectories
+- 'npx playwright test scenario.example.spec.ts' -> run specific spec file tests
+- 'npx playwright test landing login' -> run files that have "landing" or "login" in the file name
+- 'npx playwright test -g "Basic Scenario"' -> run a test with a specific title, use the -g flag followed by the title of the test.
+
+# Test execution parameters:
+- '--headed' -> forces browser headed (visual) mode 
+- '--debug' -> run tests in debug mode
+- '--ui' -> runs test in ui mode
+- '--trace on' -> forces trace capture mode
+- '--project chrome' -> forces tests to execute with chrome browser
+- '--last-failed' -> run only the tests that failed in the last test run, first run your tests and then run them again with this flag
+
+# Reports:
+- 'npx playwright show-report' -> show report of last execution
+- 'npx playwright show-trace path/to/trace.zip' -> open the trace tool for a specific scenario
+
 
 ## Help:
 
