@@ -18,10 +18,10 @@
 # Proxy set up (only use if you cant run the commands above):
 Execute the following commands in git-bash terminal:
 Note!: You need to update these settings each time you change your password!
-Substitude `user` and `pass` with your credentials, example url: http://VladimirChernev:password@webgateway.procreditbank.bg:9090)
+Substitude `user` and `pass` with your credentials:
 - npm config set proxy http://user.pass.proxy.url.bg:9999  (set proxy for http)
 - npm config set https-proxy http://user.pass.proxy.url.bg:9999  (same as above but for https)
-- npm config set strict-ssl=false  (some proxies need to ingore strict ssl certificates, use if needed)
+- npm config set strict-ssl=false  (some proxies need to ingore strict ssl certificates, use this if needed)
 
 # Set up VS Code User Settings with:
 
@@ -68,9 +68,9 @@ Substitude `user` and `pass` with your credentials, example url: http://Vladimir
 # Select tests to execute:
 - 'npx playwright test' -> runs all tests in project
 - 'npx playwright test tests/lesson-11-playwright-intro' -> run all tests in all spec files in a specific directory and its subdirectories
-- 'npx playwright test scenario.example.spec.ts' -> run specific spec file tests
 - 'npx playwright test landing login' -> run files that have "landing" or "login" in the file name
-- 'npx playwright test -g "Basic Scenario"' -> run a test with a specific title, use the -g flag followed by the title of the test.
+- 'npx playwright test scenario.example.spec.ts' -> run specific spec file tests
+- 'npx playwright test -g "Basic Scenario"' -> run a test with a specific title
 
 # Test execution parameters:
 - '--headed' -> forces browser headed (visual) mode 

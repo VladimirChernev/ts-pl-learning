@@ -11,9 +11,9 @@ What is Playwright?
 
 Why use Playwright?
 - resilient tests:
-- aut-wait - waits for elements to be actionable to perform any actions
+- auto-wait - waits for elements to be actionable to perform any actions
 - uses the Jest Assertion library under the hood
-- web-first asseritions - playwright assertion targeted for dynamic web testing
+- web-first assertions - playwright assertion targeted for dynamic web testing
 - they will automatically retry until a condition is met
 - many debugers: retrace, traceing, creating videos, screenshots and many others
 - fast execution, new browser context for each test (new browser profile), very fast
@@ -24,7 +24,7 @@ Why use Playwright?
 How to use Playwright?
 - playwright install
 - playwright config (testdir, report, headless, slowmo, pick browser)
-- basic test structure: imports, test syntax, actions, assertions
+- basic test structure: filename, imports, page fixture, test syntax, locators, actions, assertions
 - playwright execution commands
 - playwright execution parameters
 - report tool
