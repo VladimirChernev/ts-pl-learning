@@ -82,7 +82,7 @@ Substitude "user" and "pass" with your credentials:
 - `--debug` -> run tests in debug mode
 - `--ui` -> runs test in ui mode
 - `--trace on` -> forces trace capture mode
-- `npx playwright test --workers=1` -> disable parallelization, or set workers to 1, you can change the number of workers with this command
+- `--workers=1` -> you can change the number of workers with this command, you can set workers to 1 to disable parallel execution
 - `--project chrome` -> forces tests to execute with chrome browser
 - `--last-failed` -> run only the tests that failed in the last test run, first run your tests and then run them again with this flag
 
@@ -120,4 +120,5 @@ Substitude "user" and "pass" with your credentials:
 ## Locator Browser Addons
 - Selectors Hub
 - LetXpah
+
 
