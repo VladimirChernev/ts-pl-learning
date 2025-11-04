@@ -102,24 +102,25 @@ Substitude "user" and "pass" with your credentials:
 # Help - Documentation and Video Tutorials:
 
 ## node.js (Typescript + Javascript)
-- https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html (the actual typescript documentation)
-- https://www.w3schools.com/js/default.asp (javascript - a lot of the typescript code is just javascript underneath with special syntax or just plain javascript so this is very useful!)
-- https://www.w3schools.com/typescript/ (typescript)
-- https://www.geeksforgeeks.org/typescript/ (typescript)
+- `https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html` -> the actual typescript documentation
+- `https://www.w3schools.com/js/default.asp` -> javascript - a lot of the typescript code is just javascript underneath with special syntax or just plain javascript so this is very useful!
+- `https://www.w3schools.com/typescript/` -> same as above but specifically for typescript additions to javascript
+- `https://www.geeksforgeeks.org/typescript/` -> typescript examples and tutorials
 
 ## Visual Studio Code
-- https://code.visualstudio.com/docs/getstarted/introvideos (see all VS Code tutorials to learn about the IDE we use)
+- `https://code.visualstudio.com/docs/getstarted/introvideos` -> see all VS Code tutorials to learn about the IDE we use
 
 ## Playwright
-- https://playwright.dev/docs/intro (the actual documentation, this can help you with everything about Typescript!)
-- https://www.youtube.com/watch?v=iTIxEZng-rc&list=PLXgRgGX8-5UVm9yioRY329rfcfy3MusiY (good typescript video tutorials)
+- `https://playwright.dev/docs/intro` -> the actual documentation, this can help you with everything about Typescript! (RTFM!)
+- `https://www.youtube.com/watch?v=iTIxEZng-rc&list=PLXgRgGX8-5UVm9yioRY329rfcfy3MusiY` -> good Typescript + Playwright video tutorials
 
 ## GIT
-- https://www.youtube.com/watch?v=bSPSLU5T6zQ&list=PLXgRgGX8-5UWV3W9f48U7wJ1U1zixITsl (good video tutorials on GIT about 1h 30min long total)
+- `https://www.youtube.com/watch?v=bSPSLU5T6zQ&list=PLXgRgGX8-5UWV3W9f48U7wJ1U1zixITsl` -> good video tutorials on GIT about 1h 30min long total
 
 ## Locator Browser Addons
 - Selectors Hub
 - LetXpah
+
 
 
 
