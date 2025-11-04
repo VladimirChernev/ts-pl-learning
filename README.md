@@ -73,7 +73,7 @@ Substitude `user` and `pass` with your credentials:
 - `npx playwright test -g "Basic Scenario"` -> run a test with a specific title
 - `npx playwright test --grep "@sanity"` -> run only tests with the tag "@sanity"
 - `npx playwright test --grep-invert "@sanity"` -> run tests which have DON'T have the tag "@sanity"
-- `npx playwright test --grep "@sanity|@regression"` -> run tests with the tag "@sanity" OR the tag "@regression"
+- `npx playwright test --grep "@sanity|@regression"` -> run all tests with the tag "@sanity" OR the tag "@regression"
 - `npx playwright test --grep "(?=.*@sanity)(?=.*@regression)"` -> run only tests which have both the tag "@sanity" AND the tag "@regression"
 
 ## Test execution parameters:
@@ -87,8 +87,8 @@ Substitude `user` and `pass` with your credentials:
 
 ## Custom execution parameters:
 - `ENV=banker20 npx playwright test` -> pass enviroment value through terminal command parameter "ENV" and use its base url for all tests)
-- `LANG=en npx playwright test` (pass language global value through terminal command parameter "LANG" and use that language for all tests)
-- `SLOWMO=500 npx playwright test` (pass a global value through terminal command parameter "SLOWMO" to make headed tests pause 500 miliseconds between actions for better visibility of execution. Deafault value is 0 when this parameter is skipped)
+- `LANG=en npx playwright test` -> pass language global value through terminal command parameter "LANG" and use that language for all tests)
+- `SLOWMO=500 npx playwright test` -> pass a global value through terminal command parameter "SLOWMO" to make headed tests pause 500 miliseconds between actions for better visibility of execution. Deafault value is 0 when this parameter is skipped.
 
 ## example composite test run command off most of the above:
 - `ENV=staging LANG=bg SLOWMO=500 npx playwright test --grep "@bankerBG" --headed --trace on`
@@ -124,4 +124,5 @@ Substitude `user` and `pass` with your credentials:
 
 - Selectors Hub
 - LetXpah
+
 
