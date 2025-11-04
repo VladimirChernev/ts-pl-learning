@@ -1,21 +1,21 @@
 
-## Istallation and Set Up
+# Istallation and Set Up
 
 
-# Install VS Code extensions:
+## Install VS Code extensions:
 
 - Playwright (publisher: Microsoft)
 - ESLint (publisher: Microsoft)
 - Live Preview (publisher: Microsoft)
 - Prettier (publisher: Prettier)
 
-# Run the following commands in git-bash terminal to install poject packages:
+## Run the following commands in git-bash terminal to install poject packages:
 
 - npm install (install all project packages)
 - npx ts-node -v (if it asks you to install ts-node Accept, try again and you should see a version in your console like 'v10.9.2')
 - npm init playwright@latest    OR    npx playwright install --with-deps  (install Plawright with prompts or silent)
 
-# Proxy set up (only use if you cant run the commands above):
+## Proxy set up (only use if you cant run the commands above):
 Execute the following commands in git-bash terminal:
 Note!: You need to update these settings each time you change your password!
 Substitude `user` and `pass` with your credentials:
@@ -23,13 +23,13 @@ Substitude `user` and `pass` with your credentials:
 - npm config set https-proxy http://user.pass.proxy.url.bg:9999  (same as above but for https)
 - npm config set strict-ssl=false  (some proxies need to ingore strict ssl certificates, use this if needed)
 
-# Set up VS Code User Settings with:
+## Set up VS Code User Settings with:
 
 - ctr+p (to open VS Code search menu)
 - type: ">Open User Settings" and select the JSON option (search for command to execute which contains this text)
 - note!: after this you will have to set up your IDE's colour scheme again
 
-# Copy the below settings and replace your JSON file with the JSON below:
+## Copy the below settings and replace your JSON file with the JSON below:
 
 - makes git bash default terminal
 - configures formater as Prettier
@@ -63,51 +63,65 @@ Substitude `user` and `pass` with your credentials:
 }
 
 
-## Playwright commands:
+# Playwright commands:
 
-# Select tests to execute:
-- 'npx playwright test' -> runs all tests in project
-- 'npx playwright test tests/lesson-11-playwright-intro' -> run all tests in all spec files in a specific directory and its subdirectories
-- 'npx playwright test landing login' -> run files that have "landing" or "login" in the file name
-- 'npx playwright test scenario.example.spec.ts' -> run specific spec file tests
-- 'npx playwright test -g "Basic Scenario"' -> run a test with a specific title
+## Select tests to execute:
+- `npx playwright test` -> runs all tests in project
+- `npx playwright test tests/lesson-11-playwright-intro` -> run all tests in all spec files in a specific directory and its subdirectories
+- `npx playwright test landing login` -> run files that have "landing" or "login" in the file name
+- `npx playwright test scenario.example.spec.ts` -> run specific spec file tests
+- `npx playwright test -g "Basic Scenario"` -> run a test with a specific title
+- `npx playwright test --grep "@sanity"` -> run only tests with the tag "@sanity"
+- `npx playwright test --grep-invert "@sanity"` -> run tests which have DON'T have the tag "@sanity"
+- `npx playwright test --grep "@sanity|@regression"` -> run tests with the tag "@sanity" OR the tag "@regression"
+- `npx playwright test --grep "(?=.*@sanity)(?=.*@regression)"` -> run only tests which have both the tag "@sanity" AND the tag "@regression"
 
-# Test execution parameters:
-- '--headed' -> forces browser headed (visual) mode 
-- '--debug' -> run tests in debug mode
-- '--ui' -> runs test in ui mode
-- '--trace on' -> forces trace capture mode
-- '--project chrome' -> forces tests to execute with chrome browser
-- '--last-failed' -> run only the tests that failed in the last test run, first run your tests and then run them again with this flag
+## Test execution parameters:
+- `--headed` -> forces browser headed (visual) mode 
+- `--debug` -> run tests in debug mode
+- `--ui` -> runs test in ui mode
+- `--trace on` -> forces trace capture mode
+- `npx playwright test --workers=1` -> disable parallelization, or set workers to 1, you can change the number of workers with this command
+- `--project chrome` -> forces tests to execute with chrome browser
+- `--last-failed` -> run only the tests that failed in the last test run, first run your tests and then run them again with this flag
 
-# Reports:
-- 'npx playwright show-report' -> show report of last execution
-- 'npx playwright show-trace path/to/trace.zip' -> open the trace tool for a specific scenario
+## Custom execution parameters:
+- `ENV=banker20 npx playwright test` -> pass enviroment value through terminal command parameter "ENV" and use its base url for all tests)
+- `LANG=en npx playwright test` (pass language global value through terminal command parameter "LANG" and use that language for all tests)
+- `SLOWMO=500 npx playwright test` (pass a global value through terminal command parameter "SLOWMO" to make headed tests pause 500 miliseconds between actions for better visibility of execution. Deafault value is 0 when this parameter is skipped)
+
+## example composite test run command off most of the above:
+- `ENV=staging LANG=bg SLOWMO=500 npx playwright test --grep "@bankerBG" --headed --trace on`
+
+## Reports:
+- `npx playwright show-report` -> show report of last execution
+- `npx playwright show-trace path/to/trace.zip` -> open the trace tool for a specific scenario
 
 
-## Help:
+# Help:
 
-# node.js (Typescript + Javascript)
+## node.js (Typescript + Javascript)
 
 - https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html (the actual typescript documentation)
 - https://www.w3schools.com/js/default.asp (javascript - a lot of the typescript code is just javascript underneath with special syntax or just plain javascript so this is very useful!)
 - https://www.w3schools.com/typescript/ (typescript)
 - https://www.geeksforgeeks.org/typescript/ (typescript)
 
-# Visual Studio Code
+## Visual Studio Code
 
 - https://code.visualstudio.com/docs/getstarted/introvideos (see all VS Code tutorials to learn about the IDE we use)
 
-# Playwright
+## Playwright
 
 - https://playwright.dev/docs/intro (the actual documentation, this can help you with everything about Typescript!)
 - https://www.youtube.com/watch?v=iTIxEZng-rc&list=PLXgRgGX8-5UVm9yioRY329rfcfy3MusiY (good typescript video tutorials)
 
-# GIT
+## GIT
 
 - https://www.youtube.com/watch?v=bSPSLU5T6zQ&list=PLXgRgGX8-5UWV3W9f48U7wJ1U1zixITsl (good video tutorials on GIT about 1h 30min long total)
 
-# Locator Browser Addons
+## Locator Browser Addons
 
 - Selectors Hub
 - LetXpah
+
