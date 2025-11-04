@@ -91,7 +91,7 @@ Substitude "user" and "pass" with your credentials:
 - `LANG=en npx playwright test` -> pass language global value through terminal command parameter "LANG" and use that language for all tests)
 - `SLOWMO=500 npx playwright test` -> pass a global value through terminal command parameter "SLOWMO" to make headed tests pause 500 miliseconds between actions for better visibility of execution. Deafault value is 0 when this parameter is skipped.
 
-## Example composite test run command off most of the above:
+## Example composite test run command with most of the above:
 - `ENV=staging LANG=bg SLOWMO=500 npx playwright test --grep "@bankerBG" --headed --trace on`
 
 ## Reports:
@@ -120,5 +120,6 @@ Substitude "user" and "pass" with your credentials:
 ## Locator Browser Addons
 - Selectors Hub
 - LetXpah
+
 
 
