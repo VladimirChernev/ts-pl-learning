@@ -16,7 +16,7 @@
 ## Run the following commands in git-bash terminal to install poject packages:
 - `npm install` -> install all project packages
 - `npx ts-node -v` -> if it asks you to install ts-node Accept, try again and you should see a version in your console like 'v10.9.2'
-- `npm init playwright@lates`  OR  `npx playwright install --with-deps` -> install Plawright with prompts or silent
+- `npm init playwright@latest`  OR  `npx playwright install --with-deps` -> install Plawright with prompts or silent
 
 ## Proxy set up (only use if you cant run the commands above):
 Execute the following commands in git-bash terminal:
