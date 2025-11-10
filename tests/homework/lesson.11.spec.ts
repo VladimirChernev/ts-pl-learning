@@ -14,3 +14,5 @@ test('Verify the Name of Lecture 12', { tag: '@homework' }, async ({ page }) => 
   // check the name of lecture 12
   await expect(page.locator('ol')).toContainText('Основи на тестването с Playwright');
 });
+
+// afterwords you will have a new file in project/tests folder. Copy its contents into this file and remove the old one.
