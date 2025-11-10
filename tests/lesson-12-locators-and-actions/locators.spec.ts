@@ -42,8 +42,6 @@ test('Actions Examples', async ({ page }) => {
 
   // Keyboard input:
   // Hit Enter
-  await page.locator('#loginusername').fill('karamfilovs@gmail.com');
-  await page.locator('#loginpassword').fill('111111');
   await page.locator('#loginpassword').press('Enter');
   // Key combination
   await page.getByRole('textbox').press('Control+ArrowRight');
@@ -53,7 +51,9 @@ test('Actions Examples', async ({ page }) => {
   await page.locator('#universalSearchInput').press('$');
 
   // Hover over element
-  await page.getByText('Към списък фактури').hover(); // after login
+  await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+  await page.locator('#loginpassword').fill('111111');
+  await page.getByText('Към списък фактури').hover();
 
   // Scrolling:
   // Scrolls automatically so that button is visible
@@ -62,7 +62,9 @@ test('Actions Examples', async ({ page }) => {
   await page.getByRole('link', { name: 'Контакти' }).scrollIntoViewIfNeeded();
 
   // Upload files:
-  await page.locator('#tabs_documents').click(); // after login
+  await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+  await page.locator('#loginpassword').fill('111111');
+  await page.locator('#tabs_documents').click();
   await page.locator('.newbtn.selenium-new-doc').click();
   // Select one file
   await page.locator('.selenium-file-input').setInputFiles(path.join(__dirname, 'xpath_css_dom_ref.pdf'));
