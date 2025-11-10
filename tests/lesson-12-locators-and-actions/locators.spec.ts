@@ -66,7 +66,6 @@ test('Actions Examples', async ({ page }) => {
   await page.locator('.newbtn.selenium-new-doc').click();
   // Select one file
   await page.locator('.selenium-file-input').setInputFiles(path.join(__dirname, 'xpath_css_dom_ref.pdf'));
-  await page.pause();
   // Select multiple files
   await page.getByLabel('Upload files').setInputFiles([path.join(__dirname, 'file1.txt'), path.join(__dirname, 'file2.txt')]);
   // Select a directory
