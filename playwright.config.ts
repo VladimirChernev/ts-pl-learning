@@ -13,27 +13,51 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests/',
+
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  reporter: [['html', { open: 'failure' }]],
+
+  /* Maximum time one test can run for */
+  timeout: 1 * 60 * 1000,
+
+  /* Maximum time to wait for an assertion */
+  expect: { timeout: 5 * 1000 }, // equals to 5 sec.
+
   /* Run tests in files in parallel */
   // fullyParallel: true,
+  // workers: 1,
+
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   // forbidOnly: !!process.env.CI,
+
   /* Retry on CI only */
   // retries: process.env.CI ? 2 : 0,
+
   /* Opt out of parallel tests on CI. */
   // workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    // baseURL: 'https://st2016.inv.bg/',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'retain-on-failure',
+    /* Browser height and width */
+    // viewport: { width: 1500, height: 730 },
+
+    /* Whether to ignore HTTPS errors when sending network requests */
+    // ignoreHTTPSErrors: true,
+
+    /* Enable File Downlaods in Chrome */
+    // acceptDownloads: true,
+
+    /* Add Report Artefacts */
+    screenshot: 'only-on-failure', // Capture a screenshot upon scenario failure. Soft assertions fail scenarios at end of execution and will not screenshot the issue.
+    video: 'retain-on-failure', // Captures a full video of the scenario execution.
+    trace: 'retain-on-failure', // Collect trace when retrying the failed test. May cause issues in parallel execution. See https://playwright.dev/docs/trace-viewer
 
     /* Activates slow motion exectution in headed mode */
     launchOptions: {
-      slowMo: 1500,
+      slowMo: 500,
       headless: false,
     },
   },
