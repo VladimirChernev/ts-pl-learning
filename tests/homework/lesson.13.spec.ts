@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 // execute file with the command: 'npx playwright test -g "Lesson 13 Homework"'
-// add the parameter: 'npx playwright test --headed' to see the browser
-// add the parameter: 'npx playwright test --debug' to execute in debug mode
+// add the parameter: '--headed' to see the browser
+// add the parameter: '--debug' to execute in debug mode
 // after execution view html report with command: 'npx playwright show-report'
 // fill in the missing code, element to test has the same name as the test step
 // use soft assertions everywhere with comments like the example below
