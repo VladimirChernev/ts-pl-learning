@@ -18,41 +18,109 @@ import { test, expect } from '@playwright/test';
 // test.fail(); (check for false possitve)
 // test.slow(); (triple default timeout)
 
-test.describe('Annotations Examples', { tag: '@sanity' }, () => {
-  test.use({ baseURL: 'https://st2016.inv.bg/', colorScheme: 'light' });
-  test('Scenario 1', { tag: '@smoke' }, async ({ page }) => {
-    await test.step('Navigate to Landing page', async () => {
-      await page.goto('/');
+// test describe creates a test suite
+test.describe('Test Suite #1', { tag: '@sanity' }, () => {
+  test.use({ baseURL: 'https://www.wikipedia.org/', colorScheme: 'dark' });
+  // test.describe.skip - can skip whole test suites
+  // test.skip creates a test that will be skipped
+  test.skip('Scenario #1', { tag: '@smoke' }, async ({ page }) => {
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
     });
 
-    await test.step('Login into System', async () => {
+    await test.step('Login', async () => {
       await page.locator('#loginusername').fill('karamfilovs@gmail.com');
       await page.locator('#loginpassword').fill('111111');
       await page.locator('#loginsubmit').click();
-      await expect(page).toHaveTitle('Система за фактуриране - QA Ground');
     });
 
-    await test.step('Navigate to New Invoice page', async () => {
+    await test.step('Navigate to New Invoice Page', async () => {
       await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
-      await expect(page.getByRole('heading', { name: 'Нова фактура' })).toBeVisible();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
     });
   });
 
-  test('Scenario 2', async ({ page }) => {
-    await test.step('Navigate to Landing page', async () => {
-      await page.goto('/');
+  test('Scenario #2', async ({ page, browserName }) => {
+    // skip this test if the browser is not Chromium
+    test.skip(browserName !== 'chromium', 'This feature is Chromium-only');
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
     });
 
-    await test.step('Login into System', async () => {
+    await test.step('Login', async () => {
       await page.locator('#loginusername').fill('karamfilovs@gmail.com');
       await page.locator('#loginpassword').fill('111111');
       await page.locator('#loginsubmit').click();
-      await expect(page).toHaveTitle('Система за фактуриране - QA Ground');
     });
 
-    await test.step('Navigate to New Invoice page', async () => {
+    await test.step('Navigate to New Invoice Page', async () => {
       await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
-      await expect(page.getByRole('heading', { name: 'Нова фактура' })).toBeVisible();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
+    });
+  });
+
+  test('Scenario #3', async ({ page }) => {
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
+    });
+
+    // run this test only up to here because of active bug ticket
+    test.fixme(true, 'Bug #12345: This test is not working as expected');
+
+    await test.step('Login', async () => {
+      await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+      await page.locator('#loginpassword').fill('111111');
+      await page.locator('#loginsubmit').click();
+    });
+
+    await test.step('Navigate to New Invoice Page', async () => {
+      await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
+    });
+  });
+});
+
+// test.describe.parallel creates a test suite that forces execution of tests within in parallel
+test.describe.parallel('Test Suite #2', () => {
+  // test.fail creates a test that will be marked as failed always (for testing purposes to find false positives)
+  test.fail('Scenario #1', async ({ page }) => {
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
+    });
+
+    await test.step('Login', async () => {
+      await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+      await page.locator('#loginpassword').fill('111111');
+      await page.locator('#loginsubmit').click();
+    });
+
+    await test.step('Navigate to New Invoice Page', async () => {
+      await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
+    });
+  });
+
+  // test.only creates a custom test scope, only tests within this scope will be executed
+  test.only('Scenario #2', async ({ page }) => {
+    test.slow(); // this test will be marked as slow = tripple default timeout
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
+    });
+
+    await test.step('Login', async () => {
+      await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+      await page.locator('#loginpassword').fill('111111');
+      await page.locator('#loginsubmit').click();
+    });
+
+    await test.step('Navigate to New Invoice Page', async () => {
+      await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
     });
   });
 });
