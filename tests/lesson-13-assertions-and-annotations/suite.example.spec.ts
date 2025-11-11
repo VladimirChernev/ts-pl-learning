@@ -4,36 +4,56 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Test Suite #1', () => {
   test('Scenario #1', async ({ page }) => {
-    await test.step('Navigate to landing page', async () => {
-      await page.goto('https://banker3-qa.test.procreditbank.bg/');
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
     });
 
-    await test.step('Navigate to login page', async () => {
-      await page.getByRole('link', { name: 'Login' }).click();
-      await expect(page).toHaveTitle('Банкер 3 OnLine Вход в системата');
+    await test.step('Login', async () => {
+      await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+      await page.locator('#loginpassword').fill('111111');
+      await page.locator('#loginsubmit').click();
+    });
+
+    await test.step('Navigate to New Invoice Page', async () => {
+      await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
     });
   });
 
   test('Scenario #2', async ({ page }) => {
-    await test.step('Navigate to landing page', async () => {
-      await page.goto('https://banker3-qa.test.procreditbank.bg/');
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
     });
 
-    await test.step('Navigate to login page', async () => {
-      await page.getByRole('link', { name: 'Login' }).click();
-      await expect(page).toHaveTitle('Банкер 3 OnLine Вход в системата');
+    await test.step('Login', async () => {
+      await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+      await page.locator('#loginpassword').fill('111111');
+      await page.locator('#loginsubmit').click();
+    });
+
+    await test.step('Navigate to New Invoice Page', async () => {
+      await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
     });
   });
 
   test('Scenario #3', async ({ page }) => {
-    await test.step('Navigate to landing page', async () => {
-      await page.goto('https://banker3-qa.test.procreditbank.bg/');
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
     });
 
-    await test.step('Navigate to login page', async () => {
-      await page.getByRole('link', { name: 'Login' }).click();
-      await expect(page).toHaveTitle('Банкер 3 OnLine Вход в системата');
+    await test.step('Login', async () => {
+      await page.locator('#loginusername').fill('karamfilovs@gmail.com');
+      await page.locator('#loginpassword').fill('111111');
+      await page.locator('#loginsubmit').click();
+    });
+
+    await test.step('Navigate to New Invoice Page', async () => {
+      await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
     });
   });
 });
-
