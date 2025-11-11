@@ -2,7 +2,7 @@
 # Istallation and Set Up
 
 ## Pre-condition:
-- istall Ide (Visual Studio Code)
+- install Ide (Visual Studio Code)
 - install nodeJS LTS (latest stable version) from `https://nodejs.org/en/download`
 - install GIT from `https://git-scm.com/install/windows`
 - how to set up GIT `https://git-scm.com/book/ms/v2/Getting-Started-First-Time-Git-Setup`
@@ -87,8 +87,8 @@ Substitude "user" and "pass" with your credentials:
 - `--last-failed` -> run only the tests that failed in the last test run, first run your tests and then run them again with this flag
 
 ## Custom execution parameters:
-- `ENV=banker20 npx playwright test` -> pass enviroment value through terminal command parameter "ENV" and use its base url for all tests)
-- `LANG=en npx playwright test` -> pass language global value through terminal command parameter "LANG" and use that language for all tests)
+- `ENV=banker20 npx playwright test` -> pass enviroment value through terminal command parameter "ENV" and use its base url for all tests
+- `LANG=en npx playwright test` -> pass language global value through terminal command parameter "LANG" and use that language for all tests
 - `SLOWMO=500 npx playwright test` -> pass a global value through terminal command parameter "SLOWMO" to make headed tests pause 500 miliseconds between actions for better visibility of execution. Deafault value is 0 when this parameter is skipped.
 
 ## Example composite test run command with most of the above:
@@ -120,7 +120,3 @@ Substitude "user" and "pass" with your credentials:
 ## Locator Browser Addons
 - Selectors Hub
 - LetXpah
-
-
-
-
