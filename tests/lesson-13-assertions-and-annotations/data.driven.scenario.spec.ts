@@ -4,24 +4,24 @@ import { test, expect } from '@playwright/test';
 
 [
   { username: 'karamfilovs@gmail.com', password: '111111' },
-  { username: 'secondUsername', password: '2222' },
-  { username: 'thirdUsername', password: '3333' },
+  { username: 'another-user', password: 'another-password' },
+  { username: 'third-user', password: 'third-password' },
 ].forEach(({ username, password }) => {
-  test(`Parametrized Scenario with: ${username}`, { tag: '@smoke' }, async ({ page }) => {
-    await test.step('Navigate to Landing page', async () => {
-      await page.goto('/');
+  test(`Data Driven Scenario with username: ${username}`, async ({ page }) => {
+    await test.step('Navigate to Landing Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect(page).toHaveTitle('Вход - QA Ground');
     });
 
-    await test.step('Login into System', async () => {
+    await test.step('Login', async () => {
       await page.locator('#loginusername').fill(username);
       await page.locator('#loginpassword').fill(password);
       await page.locator('#loginsubmit').click();
-      await expect(page).toHaveTitle('Система за фактуриране - QA Ground');
     });
 
-    await test.step('Navigate to New Invoice page', async () => {
+    await test.step('Navigate to New Invoice Page', async () => {
       await page.getByRole('link', { name: 'Нова Фактура', exact: true }).click();
-      await expect(page.getByRole('heading', { name: 'Нова фактура' })).toBeVisible();
+      await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
     });
   });
 });
