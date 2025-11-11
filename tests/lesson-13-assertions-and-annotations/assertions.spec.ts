@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-// documentation: https://playwright.dev/docs/test-assertions
+// original jest library documentation: https://jestjs.io/docs/expect
+// playwright documentation: https://playwright.dev/docs/test-assertions
 
 test('Assertions Examples', async ({ page }) => {
   await test.step('Navigate to Landing Page', async () => {
@@ -16,7 +17,7 @@ test('Assertions Examples', async ({ page }) => {
   });
 
   /* 
-    Non-retrying (General) assertions:
+    Non-retrying (Synchronous) assertions:
   */
   expect(true).toBeTruthy();
   expect(false).toBeFalsy();
@@ -69,6 +70,6 @@ test('Assertions Examples', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Нова фактура' })).toBeVisible();
 
   // custom expect messages:
-  expect(56, 'my soft assertion').toBe(56);
+  expect(56, 'Evaluate if numbers are equal').toBe(56);
   await expect.soft(page.getByRole('heading', { name: 'Нова фактура' }), 'At correct page').toBeVisible();
 });

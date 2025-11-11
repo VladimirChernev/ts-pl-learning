@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 // https://playwright.dev/docs/api/class-test#test-describe
 
-test.describe('Test Suite #1', () => {
+test.describe('Test Suite Example', () => {
   test('Scenario #1', async ({ page }) => {
     await test.step('Navigate to Landing Page', async () => {
       await page.goto('https://st2016.inv.bg/');
