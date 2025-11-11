@@ -2,7 +2,9 @@ import { test, expect } from '@playwright/test';
 
 // documentation"https://playwright.dev/docs/test-annotations
 
-// Annotations allow for basic test structure
+/*
+  Annotations allow for basic test structure
+*/
 
 // test.describe() - creates a test suite
 // test.describe.skip - can skip whole test suites
