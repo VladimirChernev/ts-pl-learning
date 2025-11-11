@@ -25,9 +25,25 @@ test('Assertions Examples', async ({ page }) => {
   expect('success').toBe('success');
   expect('Playwright').toContain('Play');
 
+  // Polling turns a non-retrying assertrion into a retrying one:
+  await expect
+    .poll(
+      async () => {
+        return true;
+      },
+      {
+        timeout: 6000, // Custom timeout, Care!: 0 here will wait forever!
+        intervals: [1500, 3000, 4500], // Custom intervals for retries
+      },
+    )
+    .toBeTruthy();
+
   /* 
     Auto-retrying (Web-First) assertions:
   */
+
+  // Custom timeout
+  await expect(page.getByRole('heading', { name: 'Нова фактура' })).toBeVisible({ timeout: 7000 });
 
   // element visibility:
   await expect(page.getByRole('heading', { name: 'Нова фактура' })).toBeVisible();
