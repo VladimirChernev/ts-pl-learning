@@ -5,8 +5,6 @@ import { test } from '@playwright/test';
 test('Actions Examples', async ({ page }) => {
   await page.goto('https://st2016.inv.bg/login');
 
-  await page.pause();
-
   // Text Input
   // await page.locator('#loginusername').fill('username');
 
@@ -50,6 +48,4 @@ test('Actions Examples', async ({ page }) => {
 
   // Keyboard input
   await page.locator('#loginpassword').press('Enter');
-
-  await page.pause();
 });

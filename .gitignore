@@ -12,3 +12,6 @@
 
 # Playwright
 node_modules/
+
+# Playwright
+/playwright/.auth/

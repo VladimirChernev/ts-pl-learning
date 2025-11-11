@@ -56,9 +56,9 @@ test('Assertions Examples', async ({ page }) => {
 
   // dropdown has value:
   await expect(page.locator('#payment_type')).toHaveValue('cash');
-  // const locator = page.locator('id=favorite-colors');
-  // await locator.selectOption(['R', 'G']);
-  // await expect(locator).toHaveValues([/R/, /G/]);
+  const locator = page.locator('id=favorite-colors');
+  await locator.selectOption(['R', 'G']);
+  await expect(locator).toHaveValues([/R/, /G/]);
 
   // element state assertions:
   await expect(page.locator('#client_firmname')).toBeEnabled();
@@ -72,6 +72,7 @@ test('Assertions Examples', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Създай фактурата' })).toHaveAttribute('data-additional-text', 'и пренеси плащанията');
   await expect(page.getByRole('button', { name: 'Създай фактурата' })).toHaveClass('invform_submit_btn btn_green selenium-submit-invoice');
   await expect(page.getByRole('button', { name: 'Създай фактурата' })).toHaveCSS('color', 'rgb(255, 255, 255)');
+  await expect(page.getByRole('button', { name: 'Създай фактурата' })).toHaveCSS('color', '#fff');
 
   // Negative match (.not):
   expect(1).not.toEqual(0);
