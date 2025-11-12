@@ -6,13 +6,51 @@ import { test, expect } from '@playwright/test';
 // after execution view html report with command: 'npx playwright show-report'
 // fill in the missing code, element to test has the same name as the test step
 // use soft assertions everywhere with comments like the example below
-test(`Lesson 13 Homework`, async ({ page }) => {
+test(`Lesson 13 Homework`,{tag: '@CheckCheck'}, async ({ page }) => {
   await test.step('Navigate to Automation Practice page', async () => {
     await page.goto('https://rahulshettyacademy.com/AutomationPractice/');
     await expect.soft(page, 'Verify Page Title').toHaveTitle('Practice Page');
   });
 
-  // create a test step with the name 'Radio Button Example'
+await test.step('Radio Button Example', async () => {
+  await page.locator('input[value="radio2"]').check();
+  await expect.soft(page.locator('input[value="radio2"]')).toBeChecked();
+  await page.pause();
+});
+
+await test.step('Suggession Class Example', async () => {
+  await page.locator('#autocomplete').fill('Bulgar');
+  await page.locator('.ui-menu-item div').first().click();
+  await expect.soft(page.locator('#autocomplete')).toHaveValue('Bulgaria');
+  await page.pause();
+});
+
+await test.step('Dropdown Example', async () => {
+  await page.locator('#dropdown-class-example').click();
+  await page.locator('#dropdown-class-example').selectOption('option2');
+  await expect.soft(page.locator('#dropdown-class-example')).toHaveValue('option2');
+  await page.pause();
+});
+
+
+await test.step('Checkbox Example', async () => {
+  await page.locator('#checkBoxOption3').check();
+  await expect.soft(page.locator('#checkBoxOption3')).toBeChecked();
+  await page.pause();
+});
+
+await test.step('Element Display Example', async () => {
+  await page.locator('#hide-textbox').click();
+  await expect.soft(page.locator('#displayed-text')).toBeHidden();
+  await page.pause();
+});
+
+await test.step('Mouse Hover Example', async () => {
+ await page.getByRole('button', { name: 'Mouse Hover' }).hover();
+ await expect.soft(page.getByRole('link', { name: 'Top' })).toBeVisible();
+ await page.pause();
+});
+    // create a test step with the name 'Radio Button Example'
     // check radio button #2
     // Verify Radio button #2 is checked
 
