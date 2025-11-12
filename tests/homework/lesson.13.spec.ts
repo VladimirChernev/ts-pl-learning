@@ -12,28 +12,54 @@ test(`Lesson 13 Homework`, async ({ page }) => {
     await expect.soft(page, 'Verify Page Title').toHaveTitle('Practice Page');
   });
 
-  // create a test step with the name 'Radio Button Example'
+  await test.step('Radio Button Example', async () => {
     // check radio button #2
+    await page.locator('input[value="radio2"]').check();
+
     // Verify Radio button #2 is checked
+    await expect(page.locator('input[value="radio2"]')).toBeChecked();
+  });
 
-  // create a test step with the name 'Suggession Class Example'
+  await test.step('Suggession Class Example', async () => {
     // fill the input with "Bulgaria"
+    await page.getByPlaceholder('Type to Select Countries').fill('Bulgaria');
+
     // click on the first auto complete suggestion
+    await page.locator('.ui-menu-item').click();
+
     // Verify the input value is "Bulgaria"
+    await expect.soft(page.getByPlaceholder('Type to Select Countries')).toHaveValue('Bulgaria');
+  });
 
-  // create a test step with the name 'Dropdown Example'
+  await test.step('Dropdown Example', async () => {
     // select option #2 from the dropdown
+    await page.locator('#dropdown-class-example').selectOption('option2');
+
     // Verify the selected option is "option2"
+    await expect.soft(page.locator('#dropdown-class-example')).toHaveValue('option2');
+  });
 
-  // create a test step with the name 'Checkbox Example'
+  await test.step('Checkbox Example', async () => {
     // check checkbox #3
+    await page.locator('#checkBoxOption3').check();
+
     // Verify checkbox #3 is checked
+    await expect.soft(page.locator('#checkBoxOption3')).toBeChecked();
+  });
 
-  // create a test step with the name 'Element Displayed Example'
+  await test.step('Element Displayed Example', async () => {
     // click on the "Hide" button
-    // Verify the input element is now hidden
+    await page.locator('#hide-textbox').click();
 
-  // create a test step with the name 'Mouse Hover Example'
+    // Verify the input element is now hidden
+    await expect.soft(page.locator('#displayed-text')).toBeHidden();
+  });
+
+  await test.step('Mouse Hover Example', async () => {
     // hover over the "Mouse Hover" element
+    await page.locator('#mousehover').hover();
+
     // Verify the "Top" link is now visible
+    await expect.soft(page.locator('a[href="#top"]')).toBeVisible();
+  });
 });
