@@ -1,9 +1,5 @@
 import { Page, BrowserContext } from '@playwright/test';
 
-// Support Classes:
-import { WebActions } from '@lib/support/Web.Actions';
-import { Assertions } from '@lib/support/Assertions';
-
 // Page Objects:
 import { LandingPage } from '@tests/pages/Landing.page';
 import { LoginPage } from '@tests/pages/Login.page';
@@ -12,10 +8,6 @@ import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
 export default class PageFactory {
   public readonly page: Page;
   public readonly context: BrowserContext;
-
-  // Support Classes:
-  public readonly webActions: WebActions;
-  public readonly assertions: Assertions;
 
   // Page Objects:
   public readonly landingPage: LandingPage;

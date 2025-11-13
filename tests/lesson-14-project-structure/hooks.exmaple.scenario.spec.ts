@@ -50,3 +50,28 @@ test.afterEach(async ({ page }) => {
     });
   });
 });
+
+[
+  { username: 'karamfilovs@gmail.com', password: '111111' },
+  // { username: 'another-user', password: 'another-password' },
+  // { username: 'third-user', password: 'third-password' },
+].forEach(({ username, password }) => {
+  test(`Hooks Example #2`, async ({ page }) => {
+    await test.step('Navigate to Login Page', async () => {
+      await page.goto('https://st2016.inv.bg/');
+      await expect.soft(page).toHaveTitle(loginPage.TITLE);
+    });
+
+    await test.step('Login', async () => {
+      await loginPage.EMAIL_INPUT.fill(username);
+      await loginPage.PASSWORD_INPUT.fill(password);
+      await loginPage.LOGIN_BUTTON.click();
+      await expect.soft(page).toHaveTitle(landingPage.TITLE);
+    });
+
+    await test.step('Navigate to New Invoice Page', async () => {
+      await landingPage.NEW_INVOICE_BUTTON.click();
+      await expect.soft(page).toHaveTitle(newInvoicePage.TITLE);
+    });
+  });
+});
