@@ -1,16 +1,12 @@
 import { test, BrowserContext } from '@playwright/test';
-import { chromium } from '@playwright/test';
 import { Steps } from '@tests/lesson-14-project-structure/Steps.steps';
-
-// documentation: https://playwright.dev/docs/test-components#hooks
 
 let context: BrowserContext;
 let steps: Steps;
 
 test.beforeEach(async ({ page }) => {
   // set up browser context
-  const browser = await chromium.launch();
-  context = await browser.newContext();
+  const context = page.context();
 
   // initialize steps objects
   steps = new Steps(page, context);

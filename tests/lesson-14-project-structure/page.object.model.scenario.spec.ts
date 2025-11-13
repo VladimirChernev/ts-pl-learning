@@ -1,5 +1,4 @@
-import { test, expect, BrowserContext } from '@playwright/test';
-import { chromium } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { LoginPage } from '@tests/pages/Login.page';
 import { LandingPage } from '@tests/pages/Landing.page';
 import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
@@ -13,8 +12,7 @@ import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
 ].forEach(({ username, password }) => {
   test(`Page Object Model Example`, async ({ page }) => {
     // set up browser context
-    const browser = await chromium.launch();
-    const context: BrowserContext = await browser.newContext();
+    const context = page.context();
 
     // initialize page objects
     const loginPage = new LoginPage(page, context);

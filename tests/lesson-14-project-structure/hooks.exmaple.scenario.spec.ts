@@ -1,5 +1,4 @@
 import { test, expect, BrowserContext } from '@playwright/test';
-import { chromium } from '@playwright/test';
 import { LoginPage } from '@tests/pages/Login.page';
 import { LandingPage } from '@tests/pages/Landing.page';
 import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
@@ -13,8 +12,7 @@ let newInvoicePage: NewInvoicePage;
 
 test.beforeEach(async ({ page }) => {
   // set up browser context
-  const browser = await chromium.launch();
-  context = await browser.newContext();
+  const context = page.context();
 
   // initialize page objects
   loginPage = new LoginPage(page, context);
@@ -23,7 +21,8 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.afterEach(async ({ page }) => {
-  await context.close();
+  // clean up actions if needed
+  await page.close();
 });
 
 [
