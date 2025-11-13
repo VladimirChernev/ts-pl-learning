@@ -8,6 +8,26 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+// const ENV = process.env.ENV;
+// const LANG = process.env.LANG;
+let SLOWMO = 0;
+
+// if (!ENV || ![`staging`, `dev1`, `dev2`, `dev3`].includes(ENV)) {
+//   console.log(`Please provide a correct environment value, you provided: '${ENV}'`);
+//   process.exit();
+// }
+
+// if (!LANG || ![`en`, `bg`].includes(process.env.LANG)) {
+//   console.log(`Please provide a correct language value, you provided: '${LANG}'`);
+//   process.exit();
+// }
+
+if (process.env.SLOWMO) {
+  SLOWMO = Number(process.env.SLOWMO);
+}
+
+// export { ENV, LANG };
+
 /**
  * See https://playwright.dev/docs/test-configuration
  */
@@ -17,14 +37,22 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'failure' }]],
 
+  /* Output directory for test artifacts */
+  // outputDir: './test-results/',  // this is default folder
+
+  /* Set up regex to recognize files with tests by their name */
+  // testMatch: '.*(test|spec)\.(js|ts)', // default is contain 'spec' and end with '.ts'
+
   /* Maximum time one test can run for */
-  timeout: 1 * 60 * 1000,
+  // timeout: 1 * 30 * 1000, // default is 30 sec. This equals 30 sec.
 
   /* Maximum time to wait for an assertion */
-  expect: { timeout: 5 * 1000 }, // equals to 5 sec.
+  // expect: { timeout: 5 * 1000 }, // default is 5 sec. This equals 5 sec.
 
   /* Run tests in files in parallel */
   // fullyParallel: true,
+
+  /* Set number of parallel workers */
   // workers: 1,
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -41,6 +69,9 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'https://st2016.inv.bg/',
 
+    /* Browser Mode */
+    // headless: true, // default is headless
+
     /* Browser height and width */
     // viewport: { width: 1500, height: 730 },
 
@@ -50,15 +81,22 @@ export default defineConfig({
     /* Enable File Downlaods in Chrome */
     // acceptDownloads: true,
 
-    /* Add Report Artefacts */
-    screenshot: 'only-on-failure', // Capture a screenshot upon scenario failure. Soft assertions fail scenarios at end of execution and will not screenshot the issue.
-    video: 'retain-on-failure', // Captures a full video of the scenario execution.
-    trace: 'retain-on-failure', // Collect trace when retrying the failed test. May cause issues in parallel execution. See https://playwright.dev/docs/trace-viewer
+    /* 
+      Add Report Artefacts:
+    */
+
+    // Capture a screenshot upon scenario failure. Soft assertions fail scenarios at end of test execution and will not screenshot the issue as it fails.
+    // screenshot: 'only-on-failure',
+
+    // Captures a full video of the scenario execution. Soft assertions pair better with a full video.
+    video: 'retain-on-failure',
+
+    // Collect a trace file fore debugging when retrying all failed tests. This artefact may cause issues in parallel execution so if we want to capture trace we can do it on rerun of failed tests while turning parallel execution off See https://playwright.dev/docs/trace-viewer
+    trace: 'on-first-retry',
 
     /* Activates slow motion exectution in headed mode */
     launchOptions: {
-      slowMo: 0,
-      headless: false,
+      slowMo: SLOWMO,
     },
   },
 
