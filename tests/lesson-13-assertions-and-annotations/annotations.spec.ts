@@ -105,7 +105,8 @@ test.describe.parallel('Test Suite #2', () => {
   });
 
   // test.only creates a custom test scope, only tests within this scope will be executed
-  test.only('Scenario #2', async ({ page }) => {
+  // test.only('Scenario #2', async ({ page }) => {
+  test('Scenario #2', async ({ page }) => {
     test.slow(); // this test will be marked as slow = tripple default timeout
     await test.step('Navigate to Landing Page', async () => {
       await page.goto('https://st2016.inv.bg/');

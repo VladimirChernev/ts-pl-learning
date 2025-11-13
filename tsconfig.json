@@ -5,6 +5,13 @@
     "target": "ESNext",
     "sourceMap": true,
     "noImplicitAny": false,
-    "noImplicitOverride": true
+    "esModuleInterop": true,
+    "noImplicitOverride": true,
+    "paths": {
+      "@tests/*": ["./tests/*"],
+      "@lib/*": ["./lib/*"],
+      "@playwright.config": ["./playwright.config.ts"],
+      "@testconfig": ["./testConfig.ts"]
+    }
   }
 }
