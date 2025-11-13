@@ -24,6 +24,7 @@ test(`Lesson 13 Homework`, async ({ page }) => {
   // Verify the input value is "Bulgaria"
   await test.step('Suggession Class Example', async () => {
     await page.locator('#autocomplete').fill('Bulgaria');
+    await page.locator('.ui-menu-item div').first().click();
     await expect.soft(page.locator('#autocomplete'), 'Correct country is selected').toHaveValue('Bulgaria');
   });
 
