@@ -80,6 +80,6 @@ test('Locator Examples', async ({ page }) => {
   await page.locator('//*[contains(@class, "selenium")]').first().hover();
   // find last element by text:
   await page.locator('//*[contains(@class, "selenium")]').last().hover();
-  // find nth element by text (1 means the third element in the list):
-  await page.locator('//*[contains(@class, "selenium")]').nth(3).hover();
+  // find nth element by text (2 means the third element in the list):
+  await page.locator('//*[contains(@class, "selenium")]').nth(2).hover();
 });

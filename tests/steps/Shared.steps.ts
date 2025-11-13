@@ -18,8 +18,8 @@ export default class SharedSteps extends PageFactory {
 
   /**
    * Login to the site with provided username and password
-   * @param username - site username
-   * @param password - site password
+   * @param username - username to use for login
+   * @param password - password to use for login
    */
   @step('Login to the site with provided username and password')
   async login(username: string, password: string) {
