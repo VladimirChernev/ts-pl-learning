@@ -6,6 +6,7 @@ import { test, expect } from '@playwright/test';
 // after execution view html report with command: 'npx playwright show-report'
 // fill in the missing code, element to test has the same name as the test step
 // use soft assertions everywhere with comments like the example below
+
 test(`Lesson 13 Homework @homework13`, async ({ page }) => {
   await test.step('Navigate to Automation Practice page', async () => {
     await page.goto('https://rahulshettyacademy.com/AutomationPractice/');
