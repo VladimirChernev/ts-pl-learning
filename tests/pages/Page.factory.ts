@@ -22,6 +22,6 @@ export default class PageFactory {
     /* Initialize Page Objects */
     this.landingPage = new LandingPage(page, context);
     this.loginPage = new LoginPage(page, context);
-    this.newInvoicePage = new NewInvoicePage(page, context);
+    this.newInvoicePage = new NewInvoicePage(page, context);  
   }
 }
