@@ -1,11 +1,10 @@
-import { test, expect, BrowserContext } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { LoginPage } from '@tests/pages/Login.page';
 import { LandingPage } from '@tests/pages/Landing.page';
 import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
 
 // documentation: https://playwright.dev/docs/test-components#hooks
 
-let context: BrowserContext;
 let loginPage: LoginPage;
 let landingPage: LandingPage;
 let newInvoicePage: NewInvoicePage;
