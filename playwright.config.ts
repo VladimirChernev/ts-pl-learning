@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { testConfig } from '@testconfig';
 
 /**
  * Read environment variables from file.
@@ -8,25 +9,25 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-// const ENV = process.env.ENV;
-// const LANG = process.env.LANG;
+const ENV = process.env.ENV;
+const LANG = process.env.LANG;
 let SLOWMO = 0;
 
-// if (!ENV || ![`staging`, `dev1`, `dev2`, `dev3`].includes(ENV)) {
-//   console.log(`Please provide a correct environment value, you provided: '${ENV}'`);
-//   process.exit();
-// }
+if (!ENV || ![`staging`, `dev1`, `dev2`, `dev3`].includes(ENV)) {
+  console.log(`Please provide a correct environment value, you provided: '${ENV}'`);
+  process.exit();
+}
 
-// if (!LANG || ![`en`, `bg`].includes(process.env.LANG)) {
-//   console.log(`Please provide a correct language value, you provided: '${LANG}'`);
-//   process.exit();
-// }
+if (!LANG || ![`en`, `bg`].includes(process.env.LANG)) {
+  console.log(`Please provide a correct language value, you provided: '${LANG}'`);
+  process.exit();
+}
 
 if (process.env.SLOWMO) {
   SLOWMO = Number(process.env.SLOWMO);
 }
 
-// export { ENV, LANG };
+export { ENV, LANG };
 
 /**
  * See https://playwright.dev/docs/test-configuration
@@ -67,7 +68,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'https://st2016.inv.bg/',
+    baseURL: testConfig[ENV],
 
     /* Browser Mode */
     // headless: true, // default is headless

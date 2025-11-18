@@ -15,4 +15,13 @@ export default class LandingPageSteps extends PageFactory {
     await this.landingPage.NEW_INVOICE_BUTTON.click();
     await expect.soft(this.page).toHaveTitle(this.newInvoicePage.TITLE);
   }
+
+  /**
+   * Navigate to Documents Page
+   */
+  @step('Navigate to Documents Page')
+  async NavigateToDocumentsPage() {
+    await this.landingPage.DOCUMENTS_BUTTON.click();
+    await expect.soft(this.page).toHaveTitle(this.documentsPage.TITLE);
+  }
 }
