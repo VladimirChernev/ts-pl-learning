@@ -4,6 +4,7 @@ import { Page, BrowserContext } from '@playwright/test';
 import { LandingPage } from '@tests/pages/Landing.page';
 import { LoginPage } from '@tests/pages/Login.page';
 import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
+import { Documents } from '@tests/pages/Documents.page';
 
 export default class PageFactory {
   public readonly page: Page;
@@ -13,6 +14,7 @@ export default class PageFactory {
   public readonly landingPage: LandingPage;
   public readonly loginPage: LoginPage;
   public readonly newInvoicePage: NewInvoicePage;
+  public readonly documentsPage: Documents;
 
   constructor(page: Page, context: BrowserContext) {
     /* Page Setup */
@@ -22,6 +24,11 @@ export default class PageFactory {
     /* Initialize Page Objects */
     this.landingPage = new LandingPage(page, context);
     this.loginPage = new LoginPage(page, context);
+
     this.newInvoicePage = new NewInvoicePage(page, context);  
+
+    this.newInvoicePage = new NewInvoicePage(page, context);
+    this.documentsPage = new Documents(page, context);
+
   }
 }
