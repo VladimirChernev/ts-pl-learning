@@ -3,7 +3,7 @@ import { BasePage } from '@tests/pages/Base.page';
 import selectStringByLang from '@lib/tools/selectStringByLang';
 import { LANG } from '@testconfig';
 
-export class LandingPage extends BasePage {
+export default class LandingPage extends BasePage {
   public readonly TO_INVOICE_LIST: Locator;
 
   constructor(page: Page, context: BrowserContext) {

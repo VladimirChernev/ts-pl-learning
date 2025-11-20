@@ -23,7 +23,7 @@ const defaultHeaders = {
     },
   },
 ].forEach(({ url, headers, body }) => {
-  test(`Obtain Token`, { tag: ['@api'] }, async ({ request }) => {
+  test(`Obtain Token`, { tag: ['@hardcodedApi'] }, async ({ request }) => {
     console.log(`POST: ${url}`);
     console.log('Request Body:\n', JSON.stringify(body, null, 2));
 
@@ -58,7 +58,7 @@ const defaultHeaders = {
     },
   },
 ].forEach(({ url, headers, body }) => {
-  test(`Create item`, { tag: ['@api'] }, async ({ request }) => {
+  test(`Create item`, { tag: ['@hardcodedApi'] }, async ({ request }) => {
     console.log(`POST: ${url}`);
     console.log('Request Headers:\n', JSON.stringify(headers, null, 2));
     console.log('Request Body:\n', JSON.stringify(body, null, 2));
@@ -82,7 +82,7 @@ const defaultHeaders = {
     headers: defaultHeaders,
   },
 ].forEach(({ url, headers }) => {
-  test(`Get items`, { tag: ['@api'] }, async ({ request }) => {
+  test(`Get items`, { tag: ['@hardcodedApi'] }, async ({ request }) => {
     console.log(`GET: ${url}`);
     console.log('Request Headers:\n', JSON.stringify(headers, null, 2));
 
@@ -104,7 +104,7 @@ const defaultHeaders = {
     headers: defaultHeaders,
   },
 ].forEach(({ url, headers }) => {
-  test(`Get item`, { tag: ['@api'] }, async ({ request }) => {
+  test(`Get item`, { tag: ['@hardcodedApi'] }, async ({ request }) => {
     console.log(`GET: ${url}`);
     console.log('Request Headers:\n', JSON.stringify(headers, null, 2));
 
@@ -126,7 +126,7 @@ const defaultHeaders = {
     headers: defaultHeaders,
   },
 ].forEach(({ url, headers }) => {
-  test(`Delete item`, { tag: ['@api'] }, async ({ request }) => {
+  test(`Delete item`, { tag: ['@hardcodedApi'] }, async ({ request }) => {
     console.log(`DELETE: ${url}`);
     console.log('Request Headers:\n', JSON.stringify(headers, null, 2));
 

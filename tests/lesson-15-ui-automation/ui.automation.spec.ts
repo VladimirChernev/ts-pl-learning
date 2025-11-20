@@ -1,19 +1,20 @@
 import { test } from '@tests/steps/step.factory';
+import { Credentials } from '@lib/enums/credentials';
 
 [
   // test data parametrization for 2 scenarios:
   {
     // scenario 1:
     scenarioInfo: '',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     usingEnterKey: false,
   },
   {
     // scenario 2:
     scenarioInfo: ' using Enter key',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     usingEnterKey: true,
   },
   // pass the test data params forward to the test function:
@@ -79,18 +80,18 @@ import { test } from '@tests/steps/step.factory';
 
 [
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.jpeg',
   },
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.pdf',
   },
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.doc',
   },
 ].forEach(({ username, password, fileName }) => {
@@ -107,9 +108,10 @@ import { test } from '@tests/steps/step.factory';
     async ({ sharedSteps, landingSteps, documentsPageSteps }) => {
       await sharedSteps.navigateToLoginPage();
       await sharedSteps.login(username, password);
-      await landingSteps.NavigateToDocumentsPage();
-      await documentsPageSteps.ClickUploadNewDocumentButton();
-      await documentsPageSteps.UploadNewDocumentFile(fileName);
+      await landingSteps.navigateToDocumentsPage();
+      await documentsPageSteps.clickUploadNewDocumentButton();
+      await documentsPageSteps.uploadNewDocumentFile(fileName);
+      await documentsPageSteps.deleteDocumentFile(fileName);
     },
   );
 });
