@@ -1,5 +1,5 @@
 // base:
-import { test as baseTest } from '../../fixtures';
+import { test as baseTest } from '@fixtures';
 
 // Step Definitions:
 import SharedSteps from '@tests/steps/Shared.steps';

@@ -18,7 +18,7 @@ import { test } from '@tests/steps/step.factory';
   },
   // pass the test data params forward to the test function:
 ].forEach(({ scenarioInfo, username, password, usingEnterKey }) => {
-  test.only(
+  test(
     `Login${scenarioInfo} and Logout`, // test scenario title + param 'scenarioInfo' to make the title unique for each scenario
     {
       tag: ['@possitive', '@login'], // tags for scenario categorization

@@ -1,7 +1,7 @@
 import PageFactory from '@tests/pages/Page.factory';
 import { expect, Page, BrowserContext } from '@playwright/test';
 import { step } from '@lib/tools/step.decorator';
-import { LANG } from '@playwright.config';
+import { LANG } from '@testconfig';
 
 export default class SharedSteps extends PageFactory {
   constructor(page: Page, context: BrowserContext) {
