@@ -1,20 +1,19 @@
 import { test } from '@tests/steps/step.factory';
-import { Credentials } from '@lib/enums/credentials';
 
 [
   // test data parametrization for 2 scenarios:
   {
     // scenario 1:
     scenarioInfo: '',
-    username: Credentials.EMAIL,
-    password: Credentials.PASSWORD,
+    username: 'karamfilovs@gmail.com',
+    password: '111111',
     usingEnterKey: false,
   },
   {
     // scenario 2:
     scenarioInfo: ' using Enter key',
-    username: Credentials.EMAIL,
-    password: Credentials.PASSWORD,
+    username: 'karamfilovs@gmail.com',
+    password: '111111',
     usingEnterKey: true,
   },
   // pass the test data params forward to the test function:
@@ -80,18 +79,18 @@ import { Credentials } from '@lib/enums/credentials';
 
 [
   {
-    username: Credentials.EMAIL,
-    password: Credentials.PASSWORD,
+    username: 'karamfilovs@gmail.com',
+    password: '111111',
     fileName: 'empty.jpeg',
   },
   {
-    username: Credentials.EMAIL,
-    password: Credentials.PASSWORD,
+    username: 'karamfilovs@gmail.com',
+    password: '111111',
     fileName: 'empty.pdf',
   },
   {
-    username: Credentials.EMAIL,
-    password: Credentials.PASSWORD,
+    username: 'karamfilovs@gmail.com',
+    password: '111111',
     fileName: 'empty.doc',
   },
 ].forEach(({ username, password, fileName }) => {
