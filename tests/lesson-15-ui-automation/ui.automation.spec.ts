@@ -1,31 +1,37 @@
 import { test } from '@tests/steps/step.factory';
 
 [
+  // test data parametrization for 2 scenarios:
   {
+    // scenario 1:
     scenarioInfo: '',
     username: 'karamfilovs@gmail.com',
     password: '111111',
     usingEnterKey: false,
   },
   {
+    // scenario 2:
     scenarioInfo: ' using Enter key',
     username: 'karamfilovs@gmail.com',
     password: '111111',
     usingEnterKey: true,
   },
+  // pass the test data params forward to the test function:
 ].forEach(({ scenarioInfo, username, password, usingEnterKey }) => {
-  test(
-    `Login${scenarioInfo} and Logout`,
+  test.only(
+    `Login${scenarioInfo} and Logout`, // test scenario title + param 'scenarioInfo' to make the title unique for each scenario
     {
-      tag: ['@possitive'],
+      tag: ['@possitive', '@login'], // tags for scenario categorization
       annotation: [
-        { type: 'scenarioInfo', description: `${scenarioInfo}` },
+        { type: 'scenarioInfo', description: `${scenarioInfo}` }, // annotations for better reporting
         { type: 'username', description: `${username}` },
         { type: 'password', description: 'secret' },
         { type: 'usingEnterKey', description: `${usingEnterKey}` },
       ],
     },
+    // inject fixtures here to be able to use their steps in the test body:
     async ({ sharedSteps }) => {
+      // test body:
       await sharedSteps.navigateToLoginPage();
       await sharedSteps.login(username, password, usingEnterKey);
       await sharedSteps.logout();
@@ -56,7 +62,7 @@ import { test } from '@tests/steps/step.factory';
   test(
     `Unsuccesful Login: ${scenarioInfo}`,
     {
-      tag: ['@negative'],
+      tag: ['@negative', '@login'],
       annotation: [
         { type: 'scenarioInfo', description: `${scenarioInfo}` },
         { type: 'username', description: `${username}` },
