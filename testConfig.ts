@@ -1,8 +1,8 @@
 const testConfig = {
   staging: { url: `https://st2016.inv.bg/`, api: `https://api.inv.bg/v3/` },
-  dev1: { url: `https://dev1-st2016.inv.bg/`, api: `https://api.inv.bg/v3/` },
-  dev2: { url: `https://dev2-st2016.inv.bg/`, api: `https://api.inv.bg/v3/` },
-  dev3: { url: `https://dev3-st2016.inv.bg/`, api: `https://api.inv.bg/v3/` },
+  dev1: { url: `https://dev1-st2016.inv.bg/`, api: `https://dev1-api.inv.bg/v3/` },
+  dev2: { url: `https://dev2-st2016.inv.bg/`, api: `https://dev2-api.inv.bg/v3/` },
+  dev3: { url: `https://dev3-st2016.inv.bg/`, api: `https://dev3-api.inv.bg/v3/` },
 };
 
 // set default ENV value:

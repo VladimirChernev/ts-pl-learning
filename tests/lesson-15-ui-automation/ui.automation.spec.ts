@@ -1,19 +1,21 @@
 import { test } from '@tests/steps/step.factory';
+import { Credentials } from '@lib/enums/Credentials';
+import { faker } from '@faker-js/faker';
 
 [
   // test data parametrization for 2 scenarios:
   {
     // scenario 1:
     scenarioInfo: '',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     usingEnterKey: false,
   },
   {
     // scenario 2:
     scenarioInfo: ' using Enter key',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     usingEnterKey: true,
   },
   // pass the test data params forward to the test function:
@@ -48,14 +50,14 @@ import { test } from '@tests/steps/step.factory';
   },
   {
     scenarioInfo: 'Blank Password',
-    username: 'test@abv.bg',
+    username: faker.internet.email,
     password: '',
     errorMessage: 'Моля, попълнете вашата парола',
   },
   {
     scenarioInfo: 'Wrong Credentials',
-    username: 'test@abv.bg',
-    password: '123456',
+    username: faker.internet.email,
+    password: faker.internet.password,
     errorMessage: 'Грешно потребителско име или парола. Моля, опитайте отново.',
   },
 ].forEach(({ scenarioInfo, username, password, errorMessage }) => {
@@ -72,25 +74,25 @@ import { test } from '@tests/steps/step.factory';
     },
     async ({ sharedSteps }) => {
       await sharedSteps.navigateToLoginPage();
-      await sharedSteps.unsuccesfulLogin(username, password, errorMessage);
+      await sharedSteps.unsuccesfulLogin(username.toString(), password.toString(), errorMessage);
     },
   );
 });
 
 [
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.jpeg',
   },
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.pdf',
   },
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.doc',
   },
 ].forEach(({ username, password, fileName }) => {
