@@ -1,31 +1,35 @@
-import{expect, Page, Locator} from '@playwright/test';
-import { BasePage } from './base.page';
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './Base.page';
 export class PracticePage extends BasePage {
+  public readonly RADIO_OPTION2: Locator;
+  public readonly CHECKBOX_OPTION3: Locator;
+  public readonly HIDE_BUTTON: Locator;
+  public readonly INPUT_ELEMENT: Locator;
+  public readonly HOVER_AREA: Locator;
+  public readonly SUGGESTION_INPUT: Locator;
+  public readonly FIRST_SUGGESTION: Locator;
+  public readonly TOP_LINK: Locator;
+  public readonly DROPDOWN_MENU: Locator;
 
-public readonly RADIO_OPTION2: Locator;
-public readonly CHECKBOX_OPTION3: Locator;
-public readonly HIDE_BUTTON: Locator;
-public readonly INPUT_ELEMENT: Locator;
-public readonly HOVER_AREA: Locator;
-public readonly TOP_LINK: Locator;
+  constructor(page: Page) {
+    super(page);
 
-    constructor(page: Page) {
-         super(page);      
-   
-       /* Page Variables */
-     this.URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-     this.TITLE = 'Practice Page';
+    /* Page Variables */
+    this.URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+    this.TITLE = 'Practice Page';
 
-   this.RADIO_OPTION2 = this.page.getByLabel('radio2');
-   this.CHECKBOX_OPTION3 = this.page.getByLabel('Option3');
-   this.HIDE_BUTTON = this.page.getByRole('button', { name: 'Hide' });
-   this.INPUT_ELEMENT = this.page.locator('#displayed-text');
-   this.HOVER_AREA = this.page.getByRole('button', { name: 'Mouse Hover' });
-   this.TOP_LINK = this.page.getByRole('link', { name: 'Top'});
-    }
- async open() {
+    this.RADIO_OPTION2 = this.page.locator('label').filter({ hasText: 'Radio2' }).getByRole('radio');
+    this.CHECKBOX_OPTION3 = this.page.locator('#checkBoxOption3');
+    this.HIDE_BUTTON = this.page.getByRole('button', { name: 'Hide' });
+    this.INPUT_ELEMENT = this.page.locator('#displayed-text');
+    this.HOVER_AREA = this.page.getByRole('button', { name: 'Mouse Hover' });
+    this.TOP_LINK = this.page.getByRole('link', { name: 'Top' });
+    this.SUGGESTION_INPUT = this.page.locator('#autocomplete');
+    this.FIRST_SUGGESTION = this.page.locator('.ui-menu-item-wrapper').first();
+    this.DROPDOWN_MENU = this.page.locator('#dropdown-class-example');
+  }
+  async open() {
     await this.page.goto(this.URL);
-    await expect.soft(this.page).toHaveTitle('Practice Page');
   }
 
   async selectRadio2() {
@@ -40,8 +44,18 @@ public readonly TOP_LINK: Locator;
     await this.HIDE_BUTTON.click();
   }
 
+  async selectDropdownOption2() {
+    await this.DROPDOWN_MENU.selectOption('option2');
+  }
+
   async hoverMouse() {
     await this.HOVER_AREA.hover();
   }
-}
+  async enterCountry(text: string) {
+    await this.SUGGESTION_INPUT.fill(text);
+  }
 
+  async selectFirstSuggestion() {
+    await this.FIRST_SUGGESTION.click();
+  }
+}
