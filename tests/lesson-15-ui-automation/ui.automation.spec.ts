@@ -1,115 +1,39 @@
-import { test } from '@tests/steps/step.factory';
+import { test, expect } from '@playwright/test';
 
-[
-  // test data parametrization for 2 scenarios:
-  {
-    // scenario 1:
-    scenarioInfo: '',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
-    usingEnterKey: false,
-  },
-  {
-    // scenario 2:
-    scenarioInfo: ' using Enter key',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
-    usingEnterKey: true,
-  },
-  // pass the test data params forward to the test function:
-].forEach(({ scenarioInfo, username, password, usingEnterKey }) => {
-  test.only(
-    `Login${scenarioInfo} and Logout`, // test scenario title + param 'scenarioInfo' to make the title unique for each scenario
-    {
-      tag: ['@possitive', '@login'], // tags for scenario categorization
-      annotation: [
-        { type: 'scenarioInfo', description: `${scenarioInfo}` }, // annotations for better reporting
-        { type: 'username', description: `${username}` },
-        { type: 'password', description: 'secret' },
-        { type: 'usingEnterKey', description: `${usingEnterKey}` },
-      ],
-    },
-    // inject fixtures here to be able to use their steps in the test body:
-    async ({ sharedSteps }) => {
-      // test body:
-      await sharedSteps.navigateToLoginPage();
-      await sharedSteps.login(username, password, usingEnterKey);
-      await sharedSteps.logout();
-    },
-  );
-});
+// execute file with the command: 'npx playwright test -g "Lesson 13 Homework"'
+// add the parameter: '--headed' to see the browser
+// add the parameter: '--debug' to execute in debug mode
+// after execution view html report with command: 'npx playwright show-report'
+// fill in the missing code, element to test has the same name as the test step
+// use soft assertions everywhere with comments like the example below
+test(`Lesson 13 Homework`, async ({ page }) => {
+  await test.step('Navigate to Automation Practice page', async () => {
+    await page.goto('https://rahulshettyacademy.com/AutomationPractice/');
+    await expect.soft(page, 'Verify Page Title').toHaveTitle('Practice Page');
+  });
 
-[
-  {
-    scenarioInfo: 'Blank Email',
-    username: '',
-    password: '',
-    errorMessage: 'Моля, попълнете вашия email',
-  },
-  {
-    scenarioInfo: 'Blank Password',
-    username: 'test@abv.bg',
-    password: '',
-    errorMessage: 'Моля, попълнете вашата парола',
-  },
-  {
-    scenarioInfo: 'Wrong Credentials',
-    username: 'test@abv.bg',
-    password: '123456',
-    errorMessage: 'Грешно потребителско име или парола. Моля, опитайте отново.',
-  },
-].forEach(({ scenarioInfo, username, password, errorMessage }) => {
-  test(
-    `Unsuccesful Login: ${scenarioInfo}`,
-    {
-      tag: ['@negative', '@login'],
-      annotation: [
-        { type: 'scenarioInfo', description: `${scenarioInfo}` },
-        { type: 'username', description: `${username}` },
-        { type: 'password', description: 'secret' },
-        { type: 'errorMessage', description: `${errorMessage}` },
-      ],
-    },
-    async ({ sharedSteps }) => {
-      await sharedSteps.navigateToLoginPage();
-      await sharedSteps.unsuccesfulLogin(username, password, errorMessage);
-    },
-  );
-});
+  // create a test step with the name 'Radio Button Example'
+  // check radio button #2
+  // Verify Radio button #2 is checked
 
-[
-  {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
-    fileName: 'empty.jpeg',
-  },
-  {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
-    fileName: 'empty.pdf',
-  },
-  {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
-    fileName: 'empty.doc',
-  },
-].forEach(({ username, password, fileName }) => {
-  test(
-    `Upload Document File Type: ${fileName}`,
-    {
-      tag: ['@possitive', '@documents'],
-      annotation: [
-        { type: 'username', description: `${username}` },
-        { type: 'password', description: 'secret' },
-        { type: 'fileName', description: `${fileName}` },
-      ],
-    },
-    async ({ sharedSteps, landingSteps, documentsPageSteps }) => {
-      await sharedSteps.navigateToLoginPage();
-      await sharedSteps.login(username, password);
-      await landingSteps.NavigateToDocumentsPage();
-      await documentsPageSteps.ClickUploadNewDocumentButton();
-      await documentsPageSteps.UploadNewDocumentFile(fileName);
-    },
-  );
+  // create a test step with the name 'Suggession Class Example'
+  // fill the input with "Bulgaria"
+  // click on the first auto complete suggestion
+  // Verify the input value is "Bulgaria"
+
+  // create a test step with the name 'Dropdown Example'
+  // select option #2 from the dropdown
+  // Verify the selected option is "option2"
+
+  // create a test step with the name 'Checkbox Example'
+  // check checkbox #3
+  // Verify checkbox #3 is checked
+
+  // create a test step with the name 'Element Displayed Example'
+  // click on the "Hide" button
+  // Verify the input element is now hidden
+
+  // create a test step with the name 'Mouse Hover Example'
+  // hover over the "Mouse Hover" element
+  // Verify the "Top" link is now visible
 });
