@@ -1,8 +1,6 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
 import { testConfig, ENV } from '@testconfig';
 
-// API Documentation: https://api.inv.bg/v3/swagger-ui/
-
 export default class ApiActions {
   private readonly request: APIRequestContext;
   private readonly baseUrl: string;
@@ -58,7 +56,7 @@ export default class ApiActions {
       price_for_quantity: 1,
       quantity_unit: 'кг.',
       is_limited: true,
-      catalog_number: 'тест продукт',
+      catalog_number: '24',
       outside_id: 0,
       name_en: nameEn,
       tags: ['tag_1', 'tag_2'],
