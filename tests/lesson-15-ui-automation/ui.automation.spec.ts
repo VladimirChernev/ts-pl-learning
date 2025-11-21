@@ -1,31 +1,39 @@
 import { test } from '@tests/steps/step.factory';
+import { Credentials } from '@lib/enums/Credentials';
+import { faker } from '@faker-js/faker';
 
 [
+  // test data parametrization for 2 scenarios:
   {
+    // scenario 1:
     scenarioInfo: '',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     usingEnterKey: false,
   },
   {
+    // scenario 2:
     scenarioInfo: ' using Enter key',
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     usingEnterKey: true,
   },
+  // pass the test data params forward to the test function:
 ].forEach(({ scenarioInfo, username, password, usingEnterKey }) => {
   test(
-    `Login${scenarioInfo} and Logout`,
+    `Login${scenarioInfo} and Logout`, // test scenario title + param 'scenarioInfo' to make the title unique for each scenario
     {
-      tag: ['@possitive'],
+      tag: ['@possitive', '@login'], // tags for scenario categorization
       annotation: [
-        { type: 'scenarioInfo', description: `${scenarioInfo}` },
+        { type: 'scenarioInfo', description: `${scenarioInfo}` }, // annotations for better reporting
         { type: 'username', description: `${username}` },
         { type: 'password', description: 'secret' },
         { type: 'usingEnterKey', description: `${usingEnterKey}` },
       ],
     },
+    // inject fixtures here to be able to use their steps in the test body:
     async ({ sharedSteps }) => {
+      // test body:
       await sharedSteps.navigateToLoginPage();
       await sharedSteps.login(username, password, usingEnterKey);
       await sharedSteps.logout();
@@ -42,21 +50,21 @@ import { test } from '@tests/steps/step.factory';
   },
   {
     scenarioInfo: 'Blank Password',
-    username: 'test@abv.bg',
+    username: faker.internet.email,
     password: '',
     errorMessage: 'Моля, попълнете вашата парола',
   },
   {
     scenarioInfo: 'Wrong Credentials',
-    username: 'test@abv.bg',
-    password: '123456',
+    username: faker.internet.email,
+    password: faker.internet.password,
     errorMessage: 'Грешно потребителско име или парола. Моля, опитайте отново.',
   },
 ].forEach(({ scenarioInfo, username, password, errorMessage }) => {
   test(
     `Unsuccesful Login: ${scenarioInfo}`,
     {
-      tag: ['@negative'],
+      tag: ['@negative', '@login'],
       annotation: [
         { type: 'scenarioInfo', description: `${scenarioInfo}` },
         { type: 'username', description: `${username}` },
@@ -66,25 +74,25 @@ import { test } from '@tests/steps/step.factory';
     },
     async ({ sharedSteps }) => {
       await sharedSteps.navigateToLoginPage();
-      await sharedSteps.unsuccesfulLogin(username, password, errorMessage);
+      await sharedSteps.unsuccesfulLogin(username.toString(), password.toString(), errorMessage);
     },
   );
 });
 
 [
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.jpeg',
   },
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.pdf',
   },
   {
-    username: 'karamfilovs@gmail.com',
-    password: '111111',
+    username: Credentials.EMAIL,
+    password: Credentials.PASSWORD,
     fileName: 'empty.doc',
   },
 ].forEach(({ username, password, fileName }) => {
@@ -101,9 +109,10 @@ import { test } from '@tests/steps/step.factory';
     async ({ sharedSteps, landingSteps, documentsPageSteps }) => {
       await sharedSteps.navigateToLoginPage();
       await sharedSteps.login(username, password);
-      await landingSteps.NavigateToDocumentsPage();
-      await documentsPageSteps.ClickUploadNewDocumentButton();
-      await documentsPageSteps.UploadNewDocumentFile(fileName);
+      await landingSteps.navigateToDocumentsPage();
+      await documentsPageSteps.clickUploadNewDocumentButton();
+      await documentsPageSteps.uploadNewDocumentFile(fileName);
+      await documentsPageSteps.deleteDocumentFile(fileName);
     },
   );
 });

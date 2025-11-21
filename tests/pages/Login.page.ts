@@ -1,9 +1,9 @@
 import { Page, BrowserContext, Locator } from '@playwright/test';
 import { BasePage } from '@tests/pages/Base.page';
 import selectStringByLang from '@lib/tools/selectStringByLang';
-import { LANG } from '@playwright.config';
+import { LANG } from '@testconfig';
 
-export class LoginPage extends BasePage {
+export default class LoginPage extends BasePage {
   public readonly EMAIL_INPUT: Locator;
   public readonly PASSWORD_INPUT: Locator;
   public readonly LOGIN_BUTTON: Locator;

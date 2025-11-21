@@ -10,6 +10,7 @@
     "paths": {
       "@tests/*": ["./tests/*"],
       "@lib/*": ["./lib/*"],
+      "@fixtures": ["./fixtures.ts"],
       "@playwright.config": ["./playwright.config.ts"],
       "@testconfig": ["./testConfig.ts"]
     }

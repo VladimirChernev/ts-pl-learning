@@ -1,8 +1,7 @@
-import { Page, BrowserContext, Locator } from '@playwright/test';
+import { Page, BrowserContext } from '@playwright/test';
 import { BasePage } from '@tests/pages/Base.page';
 
-export class NewInvoicePage extends BasePage {
-  // public readonly TO_INVOICE_LIST: Locator;
+export default class NewInvoicePage extends BasePage {
 
   constructor(page: Page, context: BrowserContext) {
     /* Page Setup */
@@ -11,8 +10,5 @@ export class NewInvoicePage extends BasePage {
     /* Page Variables */
     this.URL = 'https://st2016.inv.bg/invoices/new';
     this.TITLE = 'Нова фактура - QA Ground';
-
-    /* Page Locators */
-    // this.TO_INVOICE_LIST = this.page.locator('//a[@class="item_startmenu"][@href="https://st2016.inv.bg/invoices"]');
   }
 }
