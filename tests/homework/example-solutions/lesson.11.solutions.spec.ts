@@ -9,11 +9,9 @@
 
 import { test, expect } from '@playwright/test';
 
-test('test using code gen tool', async ({ page }) => {
+test.only('test using code gen tool', async ({ page }) => {
   await page.goto('https://pragmatic.bg/');
-  await page.getByRole('link', { name: 'Курсове', exact: true }).hover();
+  await page.getByRole('link', { name: 'Курсове', exact: true }).hover(); // we had to add this one manually (or click on the element and update action to hover)
   await page.locator('#menu-item-9220').getByRole('link', { name: 'Автоматизирано Тестване с Playwright и TypeScript' }).click();
-
-  //await page.getByRole('link', { name: 'Основи на тестването с' }).hover();
-  await expect(page.locator('ol')).toContainText('Основи на тестването с Playwright');
+  await expect(page.locator('ol')).toContainText('Основи на тестването с Playwright'); // we had to add this one manually (or click on the element and change action to an expect )
 });
