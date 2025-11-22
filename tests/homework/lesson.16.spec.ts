@@ -28,6 +28,7 @@ const customFaker = new Faker({
     },
     async ({ apiSteps }) => {
       const token: string = await apiSteps.obtainAuthToken(username, password);
+      // you will need to create new request methods in ApiActions and steps in ApiSteps
       // make an api request to get all items list: "GET /items" and extract "total" number from response
       const itemId: number = await apiSteps.createItem(token, name, nameEn, price);
       // make an api request to get specific item details: "GET /items/{id}" of the item we created and verify item's name is the one we gave it
