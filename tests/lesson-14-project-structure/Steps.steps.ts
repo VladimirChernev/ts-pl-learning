@@ -1,7 +1,7 @@
 import { test, expect, Page, BrowserContext } from '@playwright/test';
-import { LoginPage } from '@tests/pages/Login.page';
-import { LandingPage } from '@tests/pages/Landing.page';
-import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
+import LoginPage from '@tests/pages/Login.page';
+import LandingPage from '@tests/pages/Landing.page';
+import NewInvoicePage from '@tests/pages/New.Invoice.page';
 
 export class Steps {
   public readonly page: Page;
@@ -34,8 +34,8 @@ export class Steps {
 
   /**
    * Login to the site with provided username and password
-   * @param username - site username
-   * @param password - site password
+   * @type {string} username - site username
+   * @type {string} password - site password
    */
   async Login(username: string, password: string) {
     test.step('Login', async () => {

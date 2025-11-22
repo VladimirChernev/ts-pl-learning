@@ -1,6 +1,6 @@
 import { Page, BrowserContext, Locator } from '@playwright/test';
 import selectStringByLang from '@lib/tools/selectStringByLang';
-import { LANG } from '@playwright.config';
+import { LANG } from '@testconfig';
 
 export class BasePage {
   /* Page Setup */
