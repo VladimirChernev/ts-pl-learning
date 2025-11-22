@@ -12,7 +12,7 @@ export default class ApiActions {
 
   /**
    * Set Headers with provided token
-   * @type {string} token - token used for api authentication
+   * @type {string=''} token - used for api authentication
    */
   setHeaders(token: string = '') {
     return {
