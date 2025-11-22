@@ -9,7 +9,7 @@
 
 import { test, expect } from '@playwright/test';
 
-test.only('test using code gen tool', async ({ page }) => {
+test('test using code gen tool', async ({ page }) => {
   await page.goto('https://pragmatic.bg/');
   await page.getByRole('link', { name: 'Курсове', exact: true }).hover(); // we had to add this one manually (or click on the element and update action to hover)
   await page.locator('#menu-item-9220').getByRole('link', { name: 'Автоматизирано Тестване с Playwright и TypeScript' }).click();
