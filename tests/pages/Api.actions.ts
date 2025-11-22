@@ -12,7 +12,7 @@ export default class ApiActions {
 
   /**
    * Set Headers with provided token
-   * @param {string} token - token used to api authentication
+   * @type {string} token - token used for api authentication
    */
   setHeaders(token: string = '') {
     return {
@@ -24,8 +24,8 @@ export default class ApiActions {
 
   /**
    * Obtain Authorization Token
-   * @param {string} email - user email used to login
-   * @param {string} password - user password
+   * @type {string} email - user email used to login
+   * @type {string} password - user password
    */
   async obtainAuthToken(email: string, password: string) {
     // set up request params:
@@ -57,10 +57,10 @@ export default class ApiActions {
 
   /**
    * Create Item
-   * @param {string} token - token used to api authentication
-   * @param {string} name - item name in bulgarian
-   * @param {string} nameEn - item name in english
-   * @param {number} price - item price
+   * @type {string} token - token used for api authentication
+   * @type {string} name - item name in bulgarian
+   * @type {string} nameEn - item name in english
+   * @type {number} price - item price
    */
   async createItem(token: string, name: string, nameEn: string, price: number) {
     // set up request params:
@@ -99,8 +99,8 @@ export default class ApiActions {
 
   /**
    * Delete Item
-   * @param {string} token - token used to api authentication
-   * @param {number} itemId - item unique id
+   * @type {string} token - token used for api authentication
+   * @type {number} itemId - item unique id
    */
   async deleteItem(token: string, itemId: number) {
     // set up request params:
