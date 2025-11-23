@@ -2,6 +2,7 @@ import PageFactory from '@tests/pages/Page.factory';
 import { expect, Page, BrowserContext, APIResponse } from '@playwright/test';
 import { step } from '@lib/tools/step.decorator';
 
+
 export default class ApiSteps extends PageFactory {
   constructor(page: Page, context: BrowserContext) {
     super(page, context);
@@ -62,4 +63,46 @@ export default class ApiSteps extends PageFactory {
     const response: APIResponse = await this.apiActions.deleteItem(token, itemId);
     expect.soft(response.status()).toBe(204);
   }
+
+  /**
+   * Get Items Total
+   * @type {string} token - token used for api authentication
+   * @returns {number} total items count
+   */
+  @step('Get Items Total')
+  async getItemsTotal(token: string): Promise<number> {
+    const response: APIResponse = await this.apiActions.getItems(token);
+    expect.soft(response.status()).toBe(200);
+
+    const responseBody: { total: number } = await response.json();
+    const total: number = responseBody.total;
+
+    expect.soft(total).not.toBeUndefined();
+    console.log(`Current items total: "${total}"`);
+
+    return total;
+  }
+
+  /**
+   * Get Item Details
+   * @type {string} token - token used for api authentication
+   * @type {number} itemId - item unique id
+   * @returns item details object
+   */
+  @step('Get Item Details')
+  async getItemDetails (
+    token: string,
+    itemId: number,
+  ): Promise<{id: number; name: string; name_en: string; price: number }> {
+    const response: APIResponse = await this.apiActions.getItemDetails(token, itemId);
+    expect.soft(response.status()).toBe(200);
+
+    const responseBody: { id: number; name: string; name_en: string; price: number } = await response.json();
+
+    expect.soft(responseBody.id).toBe(itemId);
+    console.log(`Fetched Item Details: \n`, JSON.stringify(responseBody, null, 2));
+
+    return responseBody;
+  }
+
 }

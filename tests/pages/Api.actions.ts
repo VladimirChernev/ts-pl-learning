@@ -121,4 +121,51 @@ export default class ApiActions {
     // return response object as rusult:
     return response;
   }
+
+  /**
+   * Get Item List
+   * @type {string} token - token used for api authentication
+   */
+  async getItems(token: string) {
+    // set up request params and Log request values:
+    const url: string = this.baseUrl + 'items';
+    console.log(`\nGet Items List:`);
+    console.log(`GET: ${url}`);
+
+    // trigger the request
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token),
+    });
+
+    // log response details
+    console.log('Response Status: ', response.status());
+    console.log('Response Body: \n', JSON.stringify(await response.json(), null, 2));
+
+    // return response object as result
+    return response;
+  }
+
+  /**
+   * Get Items Details
+   * @type {string} token - token used for api authentication
+   * @type {number} itemId - item unique id
+   */
+  async getItemDetails(token: string, itemId: number) {
+    // set up request params and Log request values
+    const url: string = this.baseUrl + `items/${itemId}`;
+    console.log(`\nGet Item Details:`);
+    console.log(`GET: ${url}`);
+
+    // trigger the request:
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token),
+    });
+
+    // log response details
+    console.log('Response Status: ', response.status());
+    console.log('Response Body: \n', JSON.stringify(await response.json(), null, 2));
+
+    // return response object as result:
+    return response;
+  }
 }
