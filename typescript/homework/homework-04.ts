@@ -28,8 +28,8 @@
 // Step 2: Use JSDoc to add description to the function, example:
 /**
  * Multiply two numbers
- * @param {number} a - the first number to be multiplied
- * @param {number} b - the second number to be multiplied
+ * @type {number} a - the first number to be multiplied
+ * @type {number} b - the second number to be multiplied
  * @returns {number} the product of a and b
  */
 // function multiply(a: number, b: number): number {

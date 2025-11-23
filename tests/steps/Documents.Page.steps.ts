@@ -19,6 +19,7 @@ export default class DocumentsPageSteps extends PageFactory {
 
   /**
    * Upload New Document File
+   * @type {string} fileName - file name with extension
    */
   @step('Upload New Document File')
   async uploadNewDocumentFile(fileName: string) {
@@ -30,6 +31,7 @@ export default class DocumentsPageSteps extends PageFactory {
 
   /**
    * Delete Document File
+   * @type {string} fileName - file name with extension
    */
   @step('Delete Document File')
   async deleteDocumentFile(fileName: string) {

@@ -9,6 +9,8 @@ export default class ApiSteps extends PageFactory {
 
   /**
    * Obtain Authorization Token
+   * @type {string} email - user email used to login
+   * @type {string} password - user password
    */
   @step('Obtain Authorization Token')
   async obtainAuthToken(email: string, password: string) {
@@ -28,6 +30,10 @@ export default class ApiSteps extends PageFactory {
 
   /**
    * Create Item
+   * @type {string} token - token used for api authentication
+   * @type {string} name - item name in bulgarian
+   * @type {string} nameEn - item name in english
+   * @type {number} price - item price
    */
   @step('Create Item')
   async createItem(token: string, name: string, nameEn: string, price: number) {
@@ -47,6 +53,8 @@ export default class ApiSteps extends PageFactory {
 
   /**
    * Delete Item
+   * @type {string} token - token used for api authentication
+   * @type {number} itemId - item unique id
    */
   @step('Delete Item')
   async deleteItem(token: string, itemId: number) {

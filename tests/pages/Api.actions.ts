@@ -10,6 +10,10 @@ export default class ApiActions {
     this.baseUrl = testConfig[ENV]['api'];
   }
 
+  /**
+   * Set Headers with provided token
+   * @type {string=''} token - used for api authentication
+   */
   setHeaders(token: string = '') {
     return {
       Accept: 'application/json',
@@ -18,6 +22,11 @@ export default class ApiActions {
     };
   }
 
+  /**
+   * Obtain Authorization Token
+   * @type {string} email - user email used to login
+   * @type {string} password - user password
+   */
   async obtainAuthToken(email: string, password: string) {
     // set up request params:
     const url: string = this.baseUrl + 'login/token';
@@ -46,6 +55,13 @@ export default class ApiActions {
     return response;
   }
 
+  /**
+   * Create Item
+   * @type {string} token - token used for api authentication
+   * @type {string} name - item name in bulgarian
+   * @type {string} nameEn - item name in english
+   * @type {number} price - item price
+   */
   async createItem(token: string, name: string, nameEn: string, price: number) {
     // set up request params:
     const url: string = this.baseUrl + 'items';
@@ -81,6 +97,11 @@ export default class ApiActions {
     return response;
   }
 
+  /**
+   * Delete Item
+   * @type {string} token - token used for api authentication
+   * @type {number} itemId - item unique id
+   */
   async deleteItem(token: string, itemId: number) {
     // set up request params:
     const url: string = this.baseUrl + `items/${itemId}`;
