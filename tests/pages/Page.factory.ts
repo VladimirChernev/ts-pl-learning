@@ -5,7 +5,9 @@ import LandingPage from '@tests/pages/Landing.page';
 import LoginPage from '@tests/pages/Login.page';
 import NewInvoicePage from '@tests/pages/New.Invoice.page';
 import Documents from '@tests/pages/Documents.page';
-import ApiActions from '@tests/pages/Api.actions'
+import ApiActions from '@tests/pages/Api.actions';
+import Clients from '@tests/pages/Clients.page';
+import NewClient from '@tests/pages/New.Client.page';
 
 export default class PageFactory {
   public readonly page: Page;
@@ -16,7 +18,9 @@ export default class PageFactory {
   public readonly loginPage: LoginPage;
   public readonly newInvoicePage: NewInvoicePage;
   public readonly documentsPage: Documents;
-  
+  public readonly clientsPage: Clients;
+  public readonly newClientPage: NewClient;
+
   // Api objects:
   public readonly apiActions: ApiActions;
 
@@ -30,6 +34,8 @@ export default class PageFactory {
     this.loginPage = new LoginPage(page, context);
     this.newInvoicePage = new NewInvoicePage(page, context);
     this.documentsPage = new Documents(page, context);
+    this.clientsPage = new Clients(page, context);
+    this.newClientPage = new NewClient(page, context);
 
     /* Api Objects */
     this.apiActions = new ApiActions(page.request);
