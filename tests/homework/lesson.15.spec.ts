@@ -18,7 +18,7 @@ import { Credentials } from '@lib/enums/Credentials';
         { type: 'usingEnterKey', description: `${usingEnterKey}` },
       ],
     },
-    async ({ sharedSteps, clientPageSteps, landingSteps }) => {
+    async ({ sharedSteps, clientsPageSteps, landingSteps }) => {
       const { faker } = await import('@faker-js/faker');
       const clientName = faker.company.name();
 
@@ -27,9 +27,9 @@ import { Credentials } from '@lib/enums/Credentials';
 
       await landingSteps.navigateToClientsPage();
 
-      await clientPageSteps.navigateToNewClientPage();
-      await clientPageSteps.addNewClient(clientName);
-      await clientPageSteps.verifyClientIsVisible(clientName);
+      await clientsPageSteps.navigateToNewClientPage();
+      await clientsPageSteps.addNewClient(clientName);
+      await clientsPageSteps.verifyClientIsVisible(clientName);
     },
   );
 });

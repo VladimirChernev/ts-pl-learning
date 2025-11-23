@@ -14,7 +14,7 @@ type MyFixtures = {
   landingSteps: LandingSteps;
   documentsPageSteps: DocumentsPageSteps;
   apiSteps: ApiSteps;
-  clientPageSteps: ClientsPageSteps;
+  clientsPageSteps: ClientsPageSteps;
 };
 
 // Extend base test by providing your page fixtures.
@@ -29,7 +29,7 @@ const test = baseTest.extend<MyFixtures>({
   documentsPageSteps: async ({ page, context }, use) => {
     await use(new DocumentsPageSteps(page, context));
   },
-  clientPageSteps: async ({ page, context }, use) => {
+  clientsPageSteps: async ({ page, context }, use) => {
     await use(new ClientsPageSteps(page, context));
   },
   apiSteps: async ({ page, context }, use) => {
