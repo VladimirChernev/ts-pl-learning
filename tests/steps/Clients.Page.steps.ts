@@ -28,20 +28,13 @@ export default class ClientsPageSteps extends PageFactory {
   }
 
   /**
-   * Click Client List Button
-   */
-  @step('Click Client List Button')
-  async clickClientListButton() {
-    await this.clientsPage.CLIENTS_LIST_BUTTON.click();
-    await expect.soft(this.clientsPage.CLIENTS_LIST.first()).toBeVisible();
-  }
-
-  /**
    * Verify client is visible in list
    * @type {string} name - name of exsiting client
    */
   @step('Verify Client is Visible in List')
   async verifyClientIsVisible(name: string) {
+    await this.clientsPage.CLIENTS_LIST_BUTTON.click();
+
     const client = this.clientsPage.CLIENTS_LIST.filter({ hasText: name });
     await expect.soft(client).toBeVisible();
   }
