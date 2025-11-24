@@ -5,6 +5,7 @@ import { LANG } from '@testconfig';
 
 export default class LandingPage extends BasePage {
   public readonly TO_INVOICE_LIST: Locator;
+  public readonly CLIENTS_BUTTON: Locator;
 
   constructor(page: Page, context: BrowserContext) {
     /* Page Setup */
@@ -16,5 +17,8 @@ export default class LandingPage extends BasePage {
 
     /* Page Locators */
     this.TO_INVOICE_LIST = this.page.locator('//a[@class="item_startmenu"][@href="https://st2016.inv.bg/invoices"]');
+
+    this.CLIENTS_BUTTON = this.page.locator('a').filter({ hasText: 'Клиенти' }).first();
+
   }
 }
