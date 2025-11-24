@@ -1,83 +1,85 @@
 import { test } from '@playwright/test';
-import path from 'path';
 
-// documentation: https://playwright.dev/docs/input
+// documentation: https://playwright.dev/docs/locators
+// best practices: https://playwright.dev/docs/best-practices#best-practices
 
-test('Actions Examples', async ({ page }) => {
+test('Locator Examples', async ({ page }) => {
   await page.goto('https://st2016.inv.bg/login');
 
-  // Text input (<input>, <textarea> and [contenteditable])
-  await page.locator('#loginusername').fill('Username');
+  /*
+    Locator + Selectors (Xpath or CSS)
+  */
 
-  // Checkboxes and Radio buttons:
-  await page.locator('.selenium-language-radio-button-EN').check();
-  await page.locator('#persistent').check();
+  // find by ID
+  await page.locator('//input[@id="loginusername"]').fill('username'); // XPath
+  await page.locator('input#loginusername').fill('username'); // CSS
 
-  // Selecting option in a dropdown:
-  await page.locator('#searchLanguage').selectOption('Afrikaans'); // both value 'af' or text 'Afrikaans' https://www.wikipedia.org/
-  // Single selection matching the label
-  await page.getByLabel('Choose a color').selectOption({ label: 'Blue' });
-  // Multiple selected items
-  await page.getByLabel('Choose multiple colors').selectOption(['red', 'green', 'blue']);
+  // find by Attribute - Name
+  await page.locator('//*[@name="password"]').fill('password'); // Xpath
+  await page.locator('[name="password"]').fill('password'); // CSS
 
-  // Mouse clicks:
-  // Generic click
-  await page.locator('#persistent').click();
-  // Double click
-  await page.locator('#passicon').dblclick();
-  // Right click
-  await page.locator('#loginusername').click({ button: 'right' });
-  // Shift + click
-  await page.getByText('Item').click({ modifiers: ['Shift'] });
-  // Ctrl + click on Windows and Linux or Meta + click on macOS:
-  await page.getByText('Item').click({ modifiers: ['ControlOrMeta'] });
-  // Click the top left corner
-  await page.locator('#simplepage').click({ position: { x: 0, y: 0 } });
+  // find by Attribute - Tabindex:
+  await page.locator('//*[@tabindex="3"]').click(); // Xpath
+  await page.locator('[tabindex="3"]').click(); // CSS
 
-  // Focus element:
-  await page.locator('#newpass2').focus();
+  // find by Class
+  await page.locator("//*[contains(@class, 'selenium')]").click(); // Xpath but this will locate any class with the substring "selenium" as part of its value like "selenium-login-header" or "selenium-remember-me-option" etc.
+  await page.locator("//input[contains(concat(' ', @class, ' '), 'selenium-submit-button g-recaptcha')]").click(); // Xpath
+  await page.locator('input.selenium-submit-button.g-recaptcha').click(); // CSS
 
-  // Drag and drop:
-  await page.locator('#newpass2').dragTo(page.locator('#loginusername'));
+  // find by Text
+  await page.locator("//*[.='Забравена парола?'] ").click(); // Xpath exact text match
+  await page.locator("//*[contains(text(),'Забравена')]").click(); // Xpath contain text
+  await page.locator('text="Забравена парола?"').click(); // CSS, remove the "" to make text NOT case sensitive
 
-  // Keyboard input:
-  // Hit Enter
-  await page.locator('#loginpassword').press('Enter');
-  // Key combination
-  await page.getByRole('textbox').press('Control+ArrowRight');
-  await page.getByRole('textbox').press('Shift+ArrowLeft');
-  await page.getByRole('textbox').press('Shift+A');
-  // Press $ sign on keyboard
-  await page.locator('#universalSearchInput').press('$');
+  // Combination Example: find by clacc and filter by text
+  await page.locator('.operator').filter({ hasText: 'Чат с оператор' }).click();
 
-  // Hover over element
-  await page.locator('#loginusername').fill('karamfilovs@gmail.com');
-  await page.locator('#loginpassword').fill('111111');
-  await page.getByText('Към списък фактури').hover();
+  /*
+    Playwright Build-in Locators
+  */
 
-  // Scrolling:
-  // Scrolls automatically so that button is visible
-  await page.getByRole('link', { name: 'Контакти' }).hover();
-  // Scroll the footer into view, forcing an "infinite list" to load more content
-  await page.getByRole('link', { name: 'Контакти' }).scrollIntoViewIfNeeded();
+  // find by Text:
+  await page.getByText('Забравена парола?').click();
+  await page.getByText('Забравена парола?', { exact: true }).click(); // make text case sensitive
 
-  // Upload files:
-  await page.locator('#loginusername').fill('karamfilovs@gmail.com');
-  await page.locator('#loginpassword').fill('111111');
-  await page.locator('#tabs_documents').click();
-  await page.locator('.newbtn.selenium-new-doc').click();
-  // Select one file
-  await page.locator('.selenium-file-input').setInputFiles(path.join(__dirname, 'xpath_css_dom_ref.pdf'));
-  // Select multiple files
-  await page.getByLabel('Upload files').setInputFiles([path.join(__dirname, 'file1.txt'), path.join(__dirname, 'file2.txt')]);
-  // Select a directory
-  await page.getByLabel('Upload directory').setInputFiles(path.join(__dirname, 'mydir'));
-  // Remove all the selected files
-  await page.getByLabel('Upload file').setInputFiles([]);
-  // Upload buffer from memory
-  await page.getByLabel('Upload file').setInputFiles({
-    name: 'file.txt',
-    mimeType: 'text/plain',
-    buffer: Buffer.from('this is test'),
-  });
+  // find by Role:
+  await page.getByRole('checkbox', { name: 'запомни входа от този компютър' }).click();
+  await page.getByRole('button', { name: 'bla' }).click();
+
+  // find by Label:
+  await page.getByLabel('Search Wikipedia').fill('knowledge'); // https://www.wikipedia.org/
+
+  // find by Placeholder:
+  await page.getByPlaceholder('Search IMDb').fill('movie'); // https://www.imdb.com/
+
+  // find by Title:
+  await page.getByTitle('English — Wikipedia — The Free Encyclopedia').click(); // https://www.wikipedia.org/
+
+  //find by Alt text:
+  await page.getByAltText('Get Certified').click(); // https://www.w3schools.com/tags/att_img_alt.asp
+
+  // find by any Attribute:
+  await page.getAttribute('class', 'selenium-submit-button');
+
+  // find by test ID (works only if the test ID is set in the HTML dom):
+  await page.getByTestId('testid#001').click();
+
+  /*
+    Working with multiple elements
+  */
+
+  // counts all elements found by locator
+  console.log(await page.locator('//*[contains(@class, "selenium")]').count());
+
+  // find all elements: ignores unique constrain and returns a list of found elements:
+  console.log((await page.locator('//*[contains(@class, "selenium")]').all()).toString());
+
+  // these are not recommended and rely on the HTML DOM structure (use as a last resort):
+  // find first element by text:
+  await page.locator('//*[contains(@class, "selenium")]').first().hover();
+  // find last element by text:
+  await page.locator('//*[contains(@class, "selenium")]').last().hover();
+  // find nth element by text (2 means the third element in the list):
+  await page.locator('//*[contains(@class, "selenium")]').nth(2).hover();
 });
