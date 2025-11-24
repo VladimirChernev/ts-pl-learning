@@ -62,4 +62,34 @@ export default class ApiSteps extends PageFactory {
     const response: APIResponse = await this.apiActions.deleteItem(token, itemId);
     expect.soft(response.status()).toBe(204);
   }
+
+  @step('Get All Items')
+  async getAllItems(token: string, query?: Record<string, string | number>) {
+    const response: APIResponse = await this.apiActions.getAllItems(token, query);
+    expect.soft(response.status()).toBe(200);
+
+    // Get response's json and extract total number of items
+    const responseBody = await response.json();
+    const totalItems: number = responseBody.total;
+    expect.soft(totalItems).not.toBeUndefined();
+
+    // console.log('Total items: ', totalItems);
+
+    return totalItems;
+  }
+
+  @step('Get Specific Item')
+  async getSpecificItem(token: string, itemId: number) {
+    const response: APIResponse = await this.apiActions.getSpecificItem(token, itemId);
+    expect.soft(response.status()).toBe(200);
+
+    // Get response's json and extract name of item
+    const responseBody = await response.json();
+    const itemName: string = responseBody.name;
+    expect.soft(itemName).not.toBeUndefined();
+
+    // console.log("Item's name: ", itemName);
+
+    return itemName;
+  }
 }
