@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '@tests/pages/Login.page';
-import { LandingPage } from '@tests/pages/Landing.page';
-import { NewInvoicePage } from '@tests/pages/New.Invoice.page';
+import  LoginPage from '@tests/pages/Login.page';
+import  LandingPage from '@tests/pages/Landing.page';
+import  NewInvoicePage from '@tests/pages/New.Invoice.page';
 
 // documentation: https://playwright.dev/docs/pom
 

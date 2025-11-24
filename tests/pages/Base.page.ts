@@ -24,6 +24,7 @@ export class BasePage {
   /* Navigation Menu*/
   public readonly NEW_INVOICE_BUTTON: Locator;
   public readonly DOCUMENTS_BUTTON: Locator;
+  public readonly CLIENTS_BUTTON: Locator;
 
   /* Other */
   public readonly SUPPORT_CHAT_BUTTON: Locator;
@@ -49,6 +50,7 @@ export class BasePage {
     /* Navigation Menu*/
     this.NEW_INVOICE_BUTTON = this.page.locator('//*[@id="tabs_invoices/new"]');
     this.DOCUMENTS_BUTTON = this.page.locator('#tabs_documents');
+    this.CLIENTS_BUTTON = this.page.locator('#tabs_clients');
 
     /* Other */
     this.SUPPORT_CHAT_BUTTON = page.locator('#lhc_status_widget_v2');

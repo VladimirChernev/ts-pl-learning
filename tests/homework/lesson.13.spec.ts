@@ -13,27 +13,27 @@ test(`Lesson 13 Homework`, async ({ page }) => {
   });
 
   // create a test step with the name 'Radio Button Example'
-  // check radio button #2
-  // Verify Radio button #2 is checked
+    // check radio button #2
+    // Verify Radio button #2 is checked
 
   // create a test step with the name 'Suggession Class Example'
-  // fill the input with "Bulgaria"
-  // click on the first auto complete suggestion
-  // Verify the input value is "Bulgaria"
+    // fill the input with "Bulgaria"
+    // click on the first auto complete suggestion
+    // Verify the input value is "Bulgaria"
 
   // create a test step with the name 'Dropdown Example'
-  // select option #2 from the dropdown
-  // Verify the selected option is "option2"
+    // select option #2 from the dropdown
+    // Verify the selected option is "option2"
 
   // create a test step with the name 'Checkbox Example'
-  // check checkbox #3
-  // Verify checkbox #3 is checked
+    // check checkbox #3
+    // Verify checkbox #3 is checked
 
   // create a test step with the name 'Element Displayed Example'
-  // click on the "Hide" button
-  // Verify the input element is now hidden
+    // click on the "Hide" button
+    // Verify the input element is now hidden
 
   // create a test step with the name 'Mouse Hover Example'
-  // hover over the "Mouse Hover" element
-  // Verify the "Top" link is now visible
+    // hover over the "Mouse Hover" element
+    // Verify the "Top" link is now visible
 });
