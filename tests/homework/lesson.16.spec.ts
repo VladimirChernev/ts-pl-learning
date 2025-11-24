@@ -1,4 +1,5 @@
 import { test } from '@tests/steps/step.factory';
+import { expect } from '@playwright/test';
 import { Credentials } from '@lib/enums/Credentials';
 import { faker, ru, Faker } from '@faker-js/faker';
 
@@ -30,10 +31,23 @@ const customFaker = new Faker({
       const token: string = await apiSteps.obtainAuthToken(username, password);
       // you will need to create new request methods in ApiActions and steps in ApiSteps
       // make an api request to get all items list: "GET /items" and extract "total" number from response
+      const initialTotal: number = await apiSteps.getItems(token);
+
       const itemId: number = await apiSteps.createItem(token, name, nameEn, price);
       // make an api request to get specific item details: "GET /items/{id}" of the item we created and verify item's name is the one we gave it
+      // Verify the created item's details by getting it by ID
+      await apiSteps.getItemById(token, itemId, name);
+      
       // make an api request to get all items list: "GET /items" again and extract the new "total" number from response
-      // compare original "total" items number to new "total" items number expecting for the new one to be incremented by 1
+      // Get new total count of items after creation
+      const newTotal: number = await apiSteps.getItems(token);
+      
+       // compare original "total" items number to new "total" items number expecting for the new one to be incremented by 1
+      expect(newTotal).toBe(initialTotal + 1);
+      console.log(`Total count increased from ${initialTotal} to ${newTotal}`);
+
+      // delete the item we created
+      
       await apiSteps.deleteItem(token, itemId);
     },
   );

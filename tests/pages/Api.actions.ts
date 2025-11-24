@@ -72,7 +72,7 @@ export default class ApiActions {
       price_for_quantity: 1,
       quantity_unit: 'кг.',
       is_limited: true,
-      catalog_number: '24',
+      catalog_number: `CATNUM_V-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
       outside_id: 0,
       name_en: nameEn,
       tags: ['tag_1', 'tag_2'],
@@ -119,6 +119,57 @@ export default class ApiActions {
     console.log('Response Status: ', response.status());
 
     // return response object as rusult:
+    return response;
+  }
+
+  /**
+  * Get All Items
+  * @type {string} token - token used for api authentication
+  */
+  async getItems(token: string) {
+    // set up request params:
+    const url: string = this.baseUrl + 'items';
+
+    // Log request values:
+    console.log(`\nGet All Items:`);
+    console.log(`GET: ${url}`);
+
+    // trigger the request:
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token),
+    });
+
+    // log response details
+    console.log('Response Status: ', response.status());
+    console.log('Response Body: \n', JSON.stringify(await response.json(), null, 2));
+
+    // return response object as result:
+    return response;
+  }
+
+  /**
+   * Get Item by ID
+   * @type {string} token - token used for api authentication
+   * @type {number} itemId - item unique id
+   */
+  async getItemById(token: string, itemId: number) {
+    // set up request params:
+    const url: string = this.baseUrl + `items/${itemId}`;
+
+    // Log request values:
+    console.log(`\nGet Item by ID:`);
+    console.log(`GET: ${url}`);
+
+    // trigger the request:
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token),
+    });
+
+    // log response details
+    console.log('Response Status: ', response.status());
+    console.log('Response Body: \n', JSON.stringify(await response.json(), null, 2));
+
+    // return response object as result:
     return response;
   }
 }
