@@ -1,7 +1,7 @@
 import PageFactory from '@tests/pages/Page.factory';
 import { expect, Page, BrowserContext } from '@playwright/test';
 import { step } from '@lib/tools/step.decorator';
-import { LANG } from '@playwright.config';
+import { LANG } from '@testconfig';
 
 export default class SharedSteps extends PageFactory {
   constructor(page: Page, context: BrowserContext) {
@@ -19,8 +19,9 @@ export default class SharedSteps extends PageFactory {
 
   /**
    * Login to the site with provided username and password
-   * @param username - username to use for login
-   * @param password - password to use for login
+   * @type {string} username - username to use for login
+   * @type {string} password - password to use for login
+   * @type {boolean=false} usingEnterKey - alternative login with Enter keyboard key press
    */
   @step('Login to the site with provided username and password')
   async login(username: string, password: string, usingEnterKey: boolean = false) {
@@ -44,9 +45,9 @@ export default class SharedSteps extends PageFactory {
 
   /**
    * Login to the site with provided username and password
-   * @param username - username to use for login
-   * @param password - password to use for login
-   * @param errorMessage - expected error message
+   * @type {string} username - username to use for login
+   * @type {string} password - password to use for login
+   * @type {string} errorMessage - expected error message
    */
   @step('Login to the site with provided username and password')
   async unsuccesfulLogin(username: string, password: string, errorMessage: string) {
