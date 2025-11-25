@@ -28,13 +28,13 @@ const customFaker = new Faker({
     },
     async ({ apiSteps }) => {
       const token: string = await apiSteps.obtainAuthToken(username, password);
-      const originalTotalResponse = await apiSteps.getTotalItems(token);
+      const originalTotalResponse = await apiSteps.getItems(token);
       const originalTotal = (await originalTotalResponse.json()).total;
 
       const itemId = await apiSteps.createItem(token, name, nameEn, price);
       await apiSteps.getItemById(token, itemId, name);
 
-      const newTotalResponse = await apiSteps.getTotalItems(token);
+      const newTotalResponse = await apiSteps.getItems(token);
       const newTotal = (await newTotalResponse.json()).total;
 
       await apiSteps.verifyTotalIncremented(originalTotal, newTotal);

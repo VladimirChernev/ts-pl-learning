@@ -73,7 +73,8 @@ export default class ApiSteps extends PageFactory {
   @step('Get Item by id')
   async getItemById(token: string, itemId: number, expectedName: string) {
     // make request and verify 200 response:
-    const response: APIResponse = await this.apiActions.getItemById(token, itemId);
+    const result = await this.apiActions.getItemById(token, itemId);
+    const response: APIResponse = result.response;
     expect.soft(response.status()).toBe(200);
     const body = await response.json();
     expect(body.name).toBe(expectedName); // verify name
