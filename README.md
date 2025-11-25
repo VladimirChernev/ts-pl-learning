@@ -79,12 +79,13 @@ Substitude "user" and "pass" with your credentials:
 
 ## Test execution parameters:
 - `--headed` -> forces browser headed (visual) mode 
-- `--debug` -> run tests in debug mode
+- `ç` -> run tests in debug mode
 - `--ui` -> runs test in ui mode
 - `--trace on` -> forces trace capture mode
 - `--workers=1` -> you can change the number of workers with this command, you can set workers to 1 to disable parallel execution
 - `--project chrome` -> forces tests to execute with chrome browser
 - `--last-failed` -> run only the tests that failed in the last test run, first run your tests and then run them again with this flag
+- `--dry-run`  -> execute the command to check for example what tests will be selected without running them
 
 ## Custom execution parameters:
 - `ENV=banker20 npx playwright test` -> pass enviroment value through terminal command parameter "ENV" and use its base url for all tests
