@@ -64,8 +64,8 @@ export default class ApiSteps extends PageFactory {
   }
   // Get Total Items
   @step('Get Total Items')
-  async getTotalItems(token: string): Promise<APIResponse> {
-    const response = await this.apiActions.getItems(token);
+  async getItems(token: string) {
+    const response: APIResponse = await this.apiActions.getItems(token);
     expect.soft(response.status()).toBe(200);
     return response;
   }
@@ -73,7 +73,7 @@ export default class ApiSteps extends PageFactory {
   @step('Get Item by id')
   async getItemById(token: string, itemId: number, expectedName: string) {
     // make request and verify 200 response:
-    const response: APIResponse = await this.apiActions.deleteItem(token, itemId);
+    const response: APIResponse = await this.apiActions.getItemById(token, itemId);
     expect.soft(response.status()).toBe(200);
     const body = await response.json();
     expect(body.name).toBe(expectedName); // verify name

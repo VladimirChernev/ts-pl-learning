@@ -137,7 +137,7 @@ export default class ApiActions {
    return response; 
   }
 
-  // Get All iems
+  // Get Items by ID
 
   async getItemById(token: string, itemId: number) {
     // set up request params:
