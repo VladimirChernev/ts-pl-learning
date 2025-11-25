@@ -79,7 +79,7 @@ Substitude "user" and "pass" with your credentials:
 
 ## Test execution parameters:
 - `--headed` -> forces browser headed (visual) mode 
-- `--debug` -> run tests in debug mode
+- `ç` -> run tests in debug mode
 - `--ui` -> runs test in ui mode
 - `--trace on` -> forces trace capture mode
 - `--workers=1` -> you can change the number of workers with this command, you can set workers to 1 to disable parallel execution

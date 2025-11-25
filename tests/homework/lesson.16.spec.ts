@@ -28,13 +28,17 @@ const customFaker = new Faker({
     },
     async ({ apiSteps }) => {
       const token: string = await apiSteps.obtainAuthToken(username, password);
-      // you will need to create new request methods in ApiActions and steps in ApiSteps
-      // make an api request to get all items list: "GET /items" and extract "total" number from response
-      const itemId: number = await apiSteps.createItem(token, name, nameEn, price);
-      // make an api request to get specific item details: "GET /items/{id}" of the item we created and verify item's name is the one we gave it
-      // make an api request to get all items list: "GET /items" again and extract the new "total" number from response
-      // compare original "total" items number to new "total" items number expecting for the new one to be incremented by 1
-      await apiSteps.deleteItem(token, itemId);
+     const originalTotalResponse = await apiSteps.getTotalItems(token);
+     const originalTotal = (await originalTotalResponse.json()).total;
+
+     const itemId = await apiSteps.createItem(token, name, nameEn, price);
+     await apiSteps.getItemById(token, itemId, name);
+
+     const newTotalResponse = await apiSteps.getTotalItems(token);
+     const newTotal = (await newTotalResponse.json()).total;
+
+     await apiSteps.verifyTotalIncremented(originalTotal, newTotal);
+     await apiSteps.deleteItem(token, itemId);
     },
   );
 });

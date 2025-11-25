@@ -121,4 +121,38 @@ export default class ApiActions {
     // return response object as rusult:
     return response;
   }
+
+  // Get All iems
+
+  async getItems(token: string) {
+    // set up request params:
+    const url: string = this.baseUrl + `items`;
+
+    // trigger the request:
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token),
+    });
+
+   console.log('Response Status:', response.status());
+   return response; 
+  }
+
+  // Get All iems
+
+  async getItemById(token: string, itemId: number) {
+    // set up request params:
+    const url: string = this.baseUrl + `items/${itemId}`;
+
+    // trigger the request:
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token)
+    });
+
+    // log response details
+    console.log('Response Status: ', response.status());
+
+    //// Parse JSON response
+    const body = await response.json();
+    return body.total;
+  }
 }
