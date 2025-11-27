@@ -1,5 +1,5 @@
 import { test } from '@tests/steps/step.factory';
-import { Credentials } from '@lib/enums/Credentials';
+import { Credentials } from '@resources/enums/Credentials';
 
 [
   {
@@ -18,7 +18,8 @@ import { Credentials } from '@lib/enums/Credentials';
         { type: 'usingEnterKey', description: `${usingEnterKey}` },
       ],
     },
-    async ({ sharedSteps }) => {  // add step fixtures here to gain access to ready steps
+    async ({ sharedSteps }) => {
+      // add step fixtures here to gain access to ready steps
       await sharedSteps.navigateToLoginPage();
       await sharedSteps.login(username, password, usingEnterKey);
       // you may need to create new Page Object Model Classes and Steps !
