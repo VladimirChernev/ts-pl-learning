@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [
-    "typescript"
+    "typescript",
+    "playwright",
+    "QA Automation"
   ],
   "repository": {
     "type": "git",
