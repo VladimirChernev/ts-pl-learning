@@ -1,6 +1,6 @@
 import { Page, BrowserContext, Locator } from '@playwright/test';
 import { BasePage } from '@tests/pages/Base.page';
-import { Credentials } from '@lib/enums/Credentials';
+import { Credentials } from '@resources/enums/Credentials';
 
 export default class ClientsPage extends BasePage {
   clientName = Credentials.CLIENT_NAME;
