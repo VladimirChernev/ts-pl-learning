@@ -72,7 +72,7 @@ export default class ApiActions {
       price_for_quantity: 1,
       quantity_unit: 'кг.',
       is_limited: true,
-      catalog_number: '24',
+      catalog_number: '32',
       outside_id: 0,
       name_en: nameEn,
       tags: ['tag_1', 'tag_2'],
@@ -120,5 +120,40 @@ export default class ApiActions {
 
     // return response object as rusult:
     return response;
+  }
+
+  // Get All iems
+
+  async getItems(token: string) {
+    // set up request params:
+    const url: string = this.baseUrl + `items`;
+
+    // trigger the request:
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token),
+    });
+    console.log('Response Status: ', response.status());
+    console.log('Response Body: \n', JSON.stringify(await response.json(), null, 2));
+
+    return response;
+  }
+
+  // Get Items by ID
+
+  async getItemById(token: string, itemId: number) {
+    // set up request params:
+    const url: string = this.baseUrl + `items/${itemId}`;
+
+    // trigger the request:
+    const response: APIResponse = await this.request.get(url, {
+      headers: this.setHeaders(token),
+    });
+
+    // log response details
+    console.log('Response Status: ', response.status());
+
+    //// Parse JSON response
+    const body = await response.json();
+    return { response, total: body.total };
   }
 }
