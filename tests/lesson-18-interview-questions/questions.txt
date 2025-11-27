@@ -1,9 +1,9 @@
 
-Interview Question Examples:
+Interview Questions Examples:
 - what is PoM, why would we use it and does the PoM has anything to do with OOP concepts?
 - what is scenario timeout, when does it commonly happen
-- how would you wait for a page or element to load -> await page.waitForLoadState('networkidle') or await locator().waitFor({state: 'visible'});
+- how would you wait for a page or element to load -> first PL auto-wait, then await page.waitForLoadState('networkidle') or await locator().waitFor({state: 'visible'});
 - hard expect vs soft expect, what is difference and when to use them?
 - what are flaky tests, how does playwright identify them -> --retries command and the --last-failed
-- how do you learn about new developments in the QA field -> Reading Relase notes, QA peers, Attending Confereneces
-- how would you test exaustively an API request -> list full negative tests including validation / error handling scenarios
+- how do you learn about new developments in the QA field -> Reading Relase notes, talking to QA peers, Attending Confereneces
+- how would you test exhaustively an API request -> list full negative tests including validation / error handling scenarios
