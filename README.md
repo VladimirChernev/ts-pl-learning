@@ -84,6 +84,7 @@ Substitude "user" and "pass" with your credentials:
 - `--trace on` -> forces trace capture mode
 - `--workers=1` -> you can change the number of workers with this command, you can set workers to 1 to disable parallel execution
 - `--project chrome` -> forces tests to execute with chrome browser
+- `--retries=3`  -> failing tests will be retried multiple times until they pass, or until the maximum number of retries is reached
 - `--last-failed` -> run only the tests that failed in the last test run, first run your tests and then run them again with this flag
 - `--dry-run`  -> execute the command to check for example what tests will be selected without running them
 

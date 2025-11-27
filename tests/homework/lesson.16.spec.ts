@@ -1,5 +1,5 @@
 import { test } from '@tests/steps/step.factory';
-import { Credentials } from '@lib/enums/Credentials';
+import { Credentials } from '@resources/enums/Credentials';
 import { faker, ru, Faker } from '@faker-js/faker';
 
 // API Documentation: https://api.inv.bg/v3/swagger-ui/

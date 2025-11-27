@@ -4,7 +4,8 @@ import { test, expect } from '@playwright/test';
 // add the parameter: '--headed' to see the browser
 // add the parameter: '--debug' to execute in debug mode
 // after execution view html report with command: 'npx playwright show-report'
-// fill in the missing code, element to test has the same name as the test step
+// fill in the missing code, where element to test has the same name as the test step
+// try to use Playwright locators where possible
 // use soft assertions everywhere with comments like the example below
 test(`Lesson 13 Homework`, async ({ page }) => {
   await test.step('Navigate to Automation Practice page', async () => {

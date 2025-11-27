@@ -1,0 +1,12 @@
+
+Common Error Examples:
+- ui wrong locator (no such element)
+- ui never identify an element by what you want to assert later or you will get an unfriendly error
+- ui locator finding multiple elements
+- ui locator which finds an element both on current page and the page we navigate to can be located before navigation takes place breaking scenario action sequence
+- scneario timeout
+- expect timeout
+- api wrong endpoint
+- api html error
+- api response wrong body type (parsing error)
+- api wrong key in body (parsing error - key does not exist or wrong type)

@@ -1,7 +1,7 @@
 import { test } from '@tests/steps/step.factory';
-import { Credentials } from '@lib/enums/Credentials';
 import { expect } from '@playwright/test';
 
+import { Credentials } from '@resources/enums/Credentials';
 
 [
   {
@@ -22,8 +22,7 @@ import { expect } from '@playwright/test';
         { type: 'clientName', description: `${clientName}` },
       ],
     },
-    async ({ sharedSteps, landingSteps, clientsPageSteps, page }) => {
-      // add step fixtures here to gain access to ready steps
+    async ({ sharedSteps, landingSteps, clientsPageSteps, page }) => {  // add step fixtures here to gain access to ready steps
       await sharedSteps.navigateToLoginPage();
       await sharedSteps.login(username, password, usingEnterKey);
       // navigate to page "Клиенти"`

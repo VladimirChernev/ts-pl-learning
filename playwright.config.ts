@@ -15,6 +15,9 @@ import { testConfig, ENV, SLOWMO } from '@testconfig';
 export default defineConfig({
   testDir: './tests/',
 
+  // Give failing tests 3 retry attempts
+  // retries: 3,
+
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'failure' }]],
 
